@@ -9,9 +9,17 @@ const Jauge = ({
   strokeWidth = 10,
   label = "React",
 }) => {
+
+  const ref = useRef()
+  const [v, set] = useState(0)
+  const length = 2 * Math.PI * radius
+  
   useEffect(() => {
+
+    let animatedValue = { val: 0 }
+
     gsap.fromTo(
-      circleRef.current,
+      ref.current,
       {
         opacity: 0.2,
       },
@@ -29,20 +37,13 @@ const Jauge = ({
         set(animatedValue.val)
       },
     })
-  }, [value])
-
-  const circleRef = useRef()
-  const textRef = useRef()
-  const [v, set] = useState(0)
-  let animatedValue = { val: 0 }
-
-  const length = 2 * Math.PI * radius
+  }, [length, value])
 
   return (
     <div>
       <svg width={radius * 2 + strokeWidth} height={radius * 2 + strokeWidth}>
         <circle
-          ref={circleRef}
+          ref={ref}
           cx={radius + strokeWidth / 2}
           cy={radius + strokeWidth / 2}
           r={radius}
@@ -58,7 +59,6 @@ const Jauge = ({
           }
         />
         <text
-          ref={textRef}
           x="50%"
           y="50%"
           textAnchor="middle"

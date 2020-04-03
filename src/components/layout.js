@@ -3,6 +3,7 @@ import PropTypes from "prop-types"
 import { ThemeProvider } from "emotion-theming"
 import Helmet from "react-helmet"
 
+import Cursor from "./cursor"
 import Menu from "./menu"
 
 const theme = {
@@ -29,6 +30,7 @@ const Layout = ({ children }) => {
             <main>{children}</main>
           </div>
         </div>
+        <Cursor />
       </ThemeProvider>
     </>
   )
