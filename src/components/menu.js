@@ -4,7 +4,7 @@ import React from "react"
 const Menu = ({ entries }) => <></>
 
 Menu.propTypes = {
-  entries: PropTypes.string,
+  entries: PropTypes.array,
 }
 
 Menu.defaultProps = {

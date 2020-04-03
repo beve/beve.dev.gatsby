@@ -24,7 +24,7 @@ module.exports = {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `beve.dev`,
-        short_name: `bv.dev`,
+        short_name: `beve.dev`,
         start_url: `/`,
         background_color: `#fff`,
         theme_color: `#f54235`,
