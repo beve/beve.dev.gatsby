@@ -21,14 +21,14 @@ const Cursor = ({ cursorSize = 24, hideCursor = true }) => {
       })
       // Set outer cursor position
       // if (!lockOuter.current) {
-        // gsap.set(outerCursor.current, {
-          // ...mousePosition.current,
-        // })
+      // gsap.set(outerCursor.current, {
+      // ...mousePosition.current,
+      // })
       // } else {
-        gsap.set(outerCursor.current, {
-          x: mousePosition.current.x - cursorSize,
-          y: mousePosition.current.y - cursorSize,
-        })
+      gsap.set(outerCursor.current, {
+        x: mousePosition.current.x - cursorSize,
+        y: mousePosition.current.y - cursorSize,
+      })
       // }
       requestAnimationFrame(renderCursor)
     }
@@ -56,13 +56,9 @@ const Cursor = ({ cursorSize = 24, hideCursor = true }) => {
       scale: 3,
       opacity: 0.1,
     })
-    tl.to(
-      outerCursor.current,
-      0.2,
-      {
-        opacity: 0.5,
-      },
-    )
+    tl.to(outerCursor.current, 0.2, {
+      opacity: 0.5,
+    })
     const surroundItem = (e) => {
       lockOuter.current = true
       tl.play()
@@ -91,6 +87,7 @@ const Cursor = ({ cursorSize = 24, hideCursor = true }) => {
           pointer-events: none;
           border-radius: 50%;
           background-color: ${theme.colors.primary};
+          mix-blend-mode: color-dodge;
         `}
       ></div>
       <div
@@ -107,6 +104,7 @@ const Cursor = ({ cursorSize = 24, hideCursor = true }) => {
           border-radius: 50%;
           border: 1px solid ${theme.colors.primary};
           background-color: transparent;
+          mix-blend-mode: color-dodge;
         `}
       ></div>
     </>
