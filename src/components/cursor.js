@@ -8,11 +8,12 @@ const Cursor = ({ cursorSize = 18, hideCursor = true }) => {
   const mousePosition = useRef({ x: 0, y: 0 })
   const lockOuter = useRef(false)
   const hovered = useRef(false)
-  const cursorOuterRatio = 3
-  const cursorOuterSize = cursorSize - 2;
+  const cursorOuterRatio = 3 
+  const cursorOuterSize = cursorSize;
   const cursorOuterSizeBig = cursorSize * cursorOuterRatio;
-    const bigCursorTL = gsap.timeline({ paused: true, defaults: { ease: 'linear' } })
-    const outerCursorTL = gsap.timeline({ paused: true, defaults: { ease: 'linear' } })
+  const cursorInnerRatio = 3
+  const bigCursorTL = gsap.timeline({ paused: true, defaults: { ease: 'linear' } })
+  const outerCursorTL = gsap.timeline({ paused: true, defaults: { ease: 'linear' } })
 
   useEffect(() => {
     // Hide main cursor
@@ -67,7 +68,7 @@ const Cursor = ({ cursorSize = 18, hideCursor = true }) => {
     })
     bigCursorTL.fromTo(innerCursor.current, { scale: 1, opacity: 1 }, {
       duration: .2,
-      scale: 3,
+      scale: cursorOuterRatio,
       opacity: .3,
     })
     bigCursorTL.fromTo(outerCursor.current,
@@ -103,8 +104,8 @@ const Cursor = ({ cursorSize = 18, hideCursor = true }) => {
         scale: 1, 
         opacity: 1 
       }, {
-        duration: 0.3,
-        scale: 3,
+        duration: .3,
+        scale: cursorInnerRatio,
         opacity: .1,
       })
     const surroundItem = (e) => {
@@ -123,7 +124,7 @@ const Cursor = ({ cursorSize = 18, hideCursor = true }) => {
         opacity: 0,
         scale: 1,
       }, {
-        duration: 0.3,
+        duration: .3,
         opacity: 1,
         scale: 5,
       }, '<')
