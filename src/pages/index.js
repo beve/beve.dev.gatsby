@@ -13,7 +13,7 @@ const IndexPage = () => (
       <Jauge value={90} label="React" />
       <Jauge value={70} label="Angular" />
       <Jauge value={80} label="Vanilla JS" />
-      <a data-cursor="big"
+      <a href="/" data-cursor="around"
         css={(theme) =>
           css`
             &:hover {
@@ -22,9 +22,22 @@ const IndexPage = () => (
             }
           `
         }
-        style={{ position: "absolute", top: "50%", left: "50%" }}
+        style={{ position: "absolute", top: "50%", left: "50%", padding: '20px' }}
       >
-        yolo
+        around
+      </a>
+      <a href="/" data-cursor="big"
+        css={(theme) =>
+          css`
+            &:hover {
+              color: ${theme.colors.primary};
+              transition: color 0.4s;
+            }
+          `
+        }
+        style={{ position: "absolute", top: "60%", left: "50%", padding: '20px' }}
+      >
+        big
       </a>
     </Grid>
   </Layout>
