@@ -8,10 +8,11 @@ const Cursor = ({ cursorSize = 18, hideCursor = true }) => {
   const mousePosition = useRef({ x: 0, y: 0 })
   const lockOuter = useRef(false)
   const hovered = useRef(false)
-  const isAnimating = useRef(false)
   const cursorOuterRatio = 3
   const cursorOuterSize = cursorSize - 2;
   const cursorOuterSizeBig = cursorSize * cursorOuterRatio;
+    const bigCursorTL = gsap.timeline({ paused: true, defaults: { ease: 'linear' } })
+    const outerCursorTL = gsap.timeline({ paused: true, defaults: { ease: 'linear' } })
 
   useEffect(() => {
     // Hide main cursor
@@ -31,7 +32,7 @@ const Cursor = ({ cursorSize = 18, hideCursor = true }) => {
           y: mouseY,
         })
       }
-      if (hovered.current && !lockOuter.current) {
+      if (hovered.current) {
         gsap.set(outerCursor.current, {
           x: `-=${cursorOuterSizeBig / 2 - cursorSize / 2 + 1}`,
           y: `-=${cursorOuterSizeBig / 2 - cursorSize / 2 + 1}`,
@@ -56,21 +57,20 @@ const Cursor = ({ cursorSize = 18, hideCursor = true }) => {
   }, [cursorSize, hideCursor, cursorOuterSizeBig])
 
 
-    const tl = gsap.timeline({ paused: true, defaults: { ease: 'linear' } })
-    const tl2 = gsap.timeline({ paused: true, defaults: { ease: 'linear' } })
 
   useEffect(() => {
     // At the end of animation, reverse outer cursor size
-    tl.eventCallback('onReverseComplete', () => {
+    bigCursorTL.eventCallback('onReverseComplete', () => {
+      // Resize outer circle to original size
       gsap.set(outerCursor.current, { width: cursorOuterSize, height: cursorOuterSize });
       hovered.current = false;
     })
-    tl.fromTo(innerCursor.current, { scale: 1, opacity: 1 }, {
+    bigCursorTL.fromTo(innerCursor.current, { scale: 1, opacity: 1 }, {
       duration: .2,
       scale: 3,
       opacity: .3,
     })
-    tl.fromTo(outerCursor.current,
+    bigCursorTL.fromTo(outerCursor.current,
       {
         scale: 1,
       },
@@ -80,36 +80,44 @@ const Cursor = ({ cursorSize = 18, hideCursor = true }) => {
       }, '<.2')
     const surroundItem = (e) => {
       hovered.current = true
+      bigCursorTL.seek(0, false)
+      outerCursorTL.seek(0, false)
       // Resize outer circle without animation for performance 
       gsap.set(outerCursor.current, { width: cursorOuterSizeBig, height: cursorOuterSizeBig });
-      tl.play()
+      bigCursorTL.play()
     }
     const leaveItem = (e) => {
-      tl.reverse()
+      bigCursorTL.reverse()
     }
     // Foreach links
     document.querySelectorAll('[data-cursor="big"').forEach((item) => {
       item.addEventListener("mouseenter", surroundItem)
       item.addEventListener("mouseleave", leaveItem)
     })
-  })
+  }, [])
 
   useEffect(() => {
-    tl2.fromTo(innerCursor.current,
-      { scale: 1, opacity: 1 }
-      , {
+    outerCursorTL.fromTo(
+      innerCursor.current,
+      { 
+        scale: 1, 
+        opacity: 1 
+      }, {
         duration: 0.3,
         scale: 3,
         opacity: .1,
       })
     const surroundItem = (e) => {
+      // Set other animation to beginning
+      bigCursorTL.seek(0, false)
+      outerCursorTL.seek(0, false)
       const el = e.target
       const { top, left, width, height } = el.getBoundingClientRect()
       gsap.to(outerCursor.current, .3, {
         x: left + width / 2 - cursorSize / 2,
         y: top + height / 2 - cursorSize / 2,
       })
-      tl2.fromTo(outerCursor.current, {
+      outerCursorTL.fromTo(outerCursor.current, {
         height: cursorSize,
         width: cursorSize,
         opacity: 0,
@@ -120,10 +128,10 @@ const Cursor = ({ cursorSize = 18, hideCursor = true }) => {
         scale: 5,
       }, '<')
       lockOuter.current = true
-      tl2.play()
+      outerCursorTL.play()
     }
     const leaveItem = (e) => {
-      tl2.reverse()
+      outerCursorTL.reverse()
       lockOuter.current = false
     }
     // Foreach links
@@ -131,7 +139,7 @@ const Cursor = ({ cursorSize = 18, hideCursor = true }) => {
       item.addEventListener("mouseenter", surroundItem)
       item.addEventListener("mouseleave", leaveItem)
     })
-  })
+  }, [])
 
   return (
     <>
