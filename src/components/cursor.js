@@ -2,16 +2,16 @@ import React, { useEffect, useRef } from "react"
 import gsap from "gsap"
 import { css } from "@emotion/core"
 
-const Cursor = ({ cursorSize = 25, hideCursor = true }) => {
+const Cursor = ({ cursorSize = 180, hideCursor = true }) => {
   const innerCursor = useRef()
   const outerCursor = useRef()
   const mousePosition = useRef({ x: 0, y: 0 })
   const lockOuter = useRef(false)
   const hovered = useRef(false)
-  const cursorOuterRatio = 3 
-  const cursorOuterSize = cursorSize;
-  const cursorOuterSizeBig = cursorSize * cursorOuterRatio;
-  const cursorInnerRatio = 3
+  const cursorInnerRatio = 0.145
+  const cursorInnerRatioBig = 0.375
+  const cursorOuterRatio = 0.375
+  const cursorOuterSize = cursorSize * cursorOuterRatio;
   const bigCursorTL = gsap.timeline({ paused: true, defaults: { ease: 'linear' } })
   const outerCursorTL = gsap.timeline({ paused: true, defaults: { ease: 'linear' } })
 
@@ -35,8 +35,8 @@ const Cursor = ({ cursorSize = 25, hideCursor = true }) => {
       }
       if (hovered.current) {
         gsap.set(outerCursor.current, {
-          x: `-=${cursorOuterSizeBig / 2 - cursorSize / 2 + 1}`,
-          y: `-=${cursorOuterSizeBig / 2 - cursorSize / 2 + 1}`,
+          x: `-=${cursorOuterSize / 2 - cursorSize / 2 + 3}`,
+          y: `-=${cursorOuterSize / 2 - cursorSize / 2 + 3}`,
         })
       }
       // }
@@ -55,7 +55,7 @@ const Cursor = ({ cursorSize = 25, hideCursor = true }) => {
     return () => {
       document.removeEventListener("mousemove", setMousePosition)
     }
-  }, [cursorSize, hideCursor, cursorOuterSizeBig])
+  }, [cursorSize, hideCursor, cursorOuterSize])
 
 
 
@@ -66,14 +66,21 @@ const Cursor = ({ cursorSize = 25, hideCursor = true }) => {
       gsap.set(outerCursor.current, { width: cursorOuterSize, height: cursorOuterSize });
       hovered.current = false;
     })
-    bigCursorTL.fromTo(innerCursor.current, { scale: 1, opacity: 1 }, {
+    bigCursorTL.fromTo(
+      innerCursor.current,
+      { 
+        scale: cursorInnerRatio, 
+        opacity: 1 
+      }, 
+     {
       duration: .2,
-      scale: cursorOuterRatio,
+      scale: cursorInnerRatioBig,
       opacity: .3,
     })
-    bigCursorTL.fromTo(outerCursor.current,
+    bigCursorTL.fromTo(
+      outerCursor.current,
       {
-        scale: 1,
+        scale: cursorInnerRatio,
       },
       {
         duration: .2,
@@ -84,30 +91,30 @@ const Cursor = ({ cursorSize = 25, hideCursor = true }) => {
       bigCursorTL.seek(0, false)
       outerCursorTL.seek(0, false)
       // Resize outer circle without animation for performance 
-      gsap.set(outerCursor.current, { width: cursorOuterSizeBig, height: cursorOuterSizeBig });
+      gsap.set(outerCursor.current, { width: cursorOuterSize, height: cursorOuterSize });
       bigCursorTL.play()
     }
     const leaveItem = (e) => {
       bigCursorTL.reverse()
     }
     // Foreach links
-    document.querySelectorAll('[data-cursor="big"').forEach((item) => {
+    document.querySelectorAll('[data-cursor="big"]').forEach((item) => {
       item.addEventListener("mouseenter", surroundItem)
       item.addEventListener("mouseleave", leaveItem)
     })
-  }, [bigCursorTL, outerCursorTL, cursorOuterSize, cursorOuterSizeBig])
+  }, [bigCursorTL, outerCursorTL, cursorOuterSize])
 
   useEffect(() => {
     outerCursorTL.fromTo(
       innerCursor.current,
-      { 
-        scale: 1, 
-        opacity: 1 
-      }, {
-        duration: .3,
+      {
         scale: cursorInnerRatio,
-        opacity: .1,
-      })
+        opacity: 1
+      }, {
+      duration: .3,
+      scale: cursorInnerRatioBig,
+      opacity: .1,
+    })
     const surroundItem = (e) => {
       // Set other animation to beginning
       bigCursorTL.seek(0, false)
@@ -122,11 +129,11 @@ const Cursor = ({ cursorSize = 25, hideCursor = true }) => {
         height: cursorSize,
         width: cursorSize,
         opacity: 0,
-        scale: 1,
+        scale: cursorOuterRatio,
       }, {
         duration: .3,
         opacity: 1,
-        scale: 5,
+        scale: cursorOuterRatio * 1.8,
       }, '<')
       lockOuter.current = true
       outerCursorTL.play()
@@ -136,7 +143,7 @@ const Cursor = ({ cursorSize = 25, hideCursor = true }) => {
       lockOuter.current = false
     }
     // Foreach links
-    document.querySelectorAll('[data-cursor="around"').forEach((item) => {
+    document.querySelectorAll('[data-cursor="around"]').forEach((item) => {
       item.addEventListener("mouseenter", surroundItem)
       item.addEventListener("mouseleave", leaveItem)
     })
@@ -170,7 +177,7 @@ const Cursor = ({ cursorSize = 25, hideCursor = true }) => {
           height: ${cursorOuterSize}px;
           background-color: red;
           border-radius: 50%;
-          border: 1px solid ${theme.colors.primary};
+          border: 3px solid ${theme.colors.primary};
           pointer-events: none;
           background-color: transparent;
         `}
