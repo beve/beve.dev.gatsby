@@ -13,7 +13,7 @@ import ContactInfos from "./contactInfos"
 const theme = {
   font: "Open Sans",
   colors: {
-    primary: "#e53b32",
+    primary: "#f62f1c",
     grid: "#ececec",
     text: "#343434"
   },
