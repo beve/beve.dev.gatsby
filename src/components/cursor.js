@@ -95,7 +95,7 @@ const Cursor = ({ cursorSize = 25, hideCursor = true }) => {
       item.addEventListener("mouseenter", surroundItem)
       item.addEventListener("mouseleave", leaveItem)
     })
-  }, [])
+  }, [bigCursorTL, outerCursorTL, cursorOuterSize, cursorOuterSizeBig])
 
   useEffect(() => {
     outerCursorTL.fromTo(
@@ -140,7 +140,7 @@ const Cursor = ({ cursorSize = 25, hideCursor = true }) => {
       item.addEventListener("mouseenter", surroundItem)
       item.addEventListener("mouseleave", leaveItem)
     })
-  }, [])
+  }, [bigCursorTL, outerCursorTL, cursorSize])
 
   return (
     <>
