@@ -2,13 +2,14 @@ import React from "react"
 import { css } from "@emotion/core"
 
 const style = theme => css`
-  // transform: rotate(270deg);
   font-size: 1em; // 16px
   grid-area: infos;
   border-right: 1px solid ${theme.colors.grid};
+  background-color: #fff;
   div {
     position: fixed;
     bottom: 90px;
+    margin-left: 24px;
     display: flex;
     flex-flow: column nowrap;
     transform: rotate(270deg);

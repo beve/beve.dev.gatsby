@@ -2,7 +2,6 @@ import React from "react"
 import { css } from "@emotion/core"
 
 const style = (theme) => css`
-  display: inline-block;
   font-size: 2.5em;
   font-weight: bold;
   line-height: 0.85em;
@@ -10,7 +9,6 @@ const style = (theme) => css`
   grid-area: logo;
   border-right: 1px solid ${theme.colors.grid};
   & > div {
-    align-items: center;
     display: flex;
     height: 100%;
     flex-flow: column nowrap;

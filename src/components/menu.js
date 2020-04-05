@@ -4,6 +4,7 @@ import { css } from "@emotion/core"
 const style = (theme) => css`
   display: flex;
   height: 139px;
+  right: 0;
   border-bottom: 1px solid ${theme.colors.grid};
   justify-content: space-evenly; 
   align-items: center;

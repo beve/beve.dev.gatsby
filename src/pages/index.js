@@ -3,17 +3,14 @@ import { css } from "@emotion/core"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import Grid from "../components/grid"
-import Jauge from "../components/jauge"
+
+import Landing from "../blocks/landing"
 
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" />
-    <Grid>
-      {/* <Jauge value={90} label="React" />
-      <Jauge value={70} label="Angular" />
-      <Jauge value={80} label="Vanilla JS" /> */}
-    </Grid>
+      <div css={css`min-height: 2000px;background-color: #f0f0f0;`}></div>
+      <Landing />
   </Layout>
 )
 

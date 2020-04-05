@@ -28,18 +28,42 @@ const style = (theme) => css`
   }
 `
 
-const gridStyle = css`
+const topGrid = css`
+  position: fixed;
+  z-index: 10;
+  grid-template-columns: repeat(7, 1fr);
+  width: 100vw;
   max-width: 1440px;
-  margin: 0 auto;
-  min-height: calc( 100vh );
   grid-template-areas:
-  "logo logo spacer spacer spacer spacer menu menu menu menu menu menu menu menu"
-  "infos infos content content content content content content content content content content content content"
+  "logo spacer1 spacer2 menu menu menu menu";
+
+  @media screen and (min-width: 1440px) {
+    left: 50%;
+    transform: translateX(calc(-50%));
+  }
 `
 
-const spacer = theme => css`
+const mainGrid = css`
+  margin: 0 auto;
+  width: 100vw;
+  max-width: 1440px;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-areas:
+  "infos main main main main main main"
+`
+const spacer1 = theme => css`
   border-right: 1px solid ${theme.colors.grid};
-  grid-area: spacer;
+  grid-area: spacer1;
+`
+
+const spacer2 = theme => css`
+  border-right: 1px solid ${theme.colors.grid};
+  grid-area: spacer2;
+`
+
+const main = css`
+  padding-top: 140px;
+  grid-area: main;
 `
 
 const Layout = ({ children }) => {
@@ -48,11 +72,14 @@ const Layout = ({ children }) => {
       <Helmet></Helmet>
       <ThemeProvider theme={theme}>
         <div css={style}>
-          <Grid customCss={gridStyle}>
+          <Grid customCss={topGrid}>
             <Beve />
-            <div css={spacer}></div>
+            <div css={spacer1}></div>
+            <div css={spacer2}></div>
             <Menu />
-            <main>{children}</main>
+          </Grid>
+          <Grid customCss={mainGrid}>
+            <main css={main}>{children}</main>
             <ContactInfos />
           </Grid>
         </div>
