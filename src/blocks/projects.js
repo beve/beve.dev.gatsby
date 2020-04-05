@@ -5,7 +5,7 @@ import Grid from './grid'
 
 const Projects = () => {
   return (
-    <Grid customCss={gridCSS}>
+    <Grid gridCss={gridCSS}>
       <div css={style}></div>
     </Grid>
   )

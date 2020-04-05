@@ -41,7 +41,7 @@ const desc = (theme) => css`
 const Landing = () => {
   return (
     <>
-      <Grid customCss={grid} drawCols={12}>
+      <Grid gridCss={grid} colsCss={css`z-index: -1`} drawCols={12}>
         <div css={caption}>
           <div>Make dev.</div>
           <span>great again !</span>

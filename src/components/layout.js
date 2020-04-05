@@ -76,13 +76,13 @@ const Layout = ({ children }) => {
       <Helmet></Helmet>
       <ThemeProvider theme={theme}>
         <div css={style}>
-          <Grid customCss={topGrid}>
+          <Grid gridCss={topGrid}>
             <Beve />
             <div css={spacer1}></div>
             <div css={spacer2}></div>
             <Menu />
           </Grid>
-          <Grid customCss={mainGrid}>
+          <Grid gridCss={mainGrid}>
             <ContactInfos />
             <main css={main}>{children}</main>
           </Grid>

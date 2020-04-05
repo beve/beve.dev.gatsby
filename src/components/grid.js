@@ -17,15 +17,14 @@ const cols = css`
   }
 `
 
-const Grid = ({ children, customCss, drawCols }) => {
-  const zIndex = drawCols ? css`z-index: -1` : css``;
+const Grid = ({ children, gridCss, drawCols, colsCss }) => {
   let divs;
   if (drawCols) {
     divs = new Array(drawCols).fill();
   }
   return (
-    <div css={[style, css`grid-template-columns: repeat(${drawCols}, 1fr)`, customCss]}>
-      {divs && divs.map((_, i) => <div css={[cols, css`grid-column: ${i+1}`]} key={`d${i}`}></div>)}
+    <div css={[style, css`grid-template-columns: repeat(${drawCols}, 1fr)`, gridCss]}>
+      {divs && divs.map((_, i) => <div css={[cols, css`grid-column: ${i+1}`, colsCss]} key={`d${i}`}></div>)}
       {children}
     </div>
   )

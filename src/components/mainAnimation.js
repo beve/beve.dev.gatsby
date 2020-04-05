@@ -9,7 +9,7 @@ const style = (theme) => {
 
 const MainAnimation = () => {
   return (
-    <Grid customCss={gridCSS}>
+    <Grid gridCss={gridCSS}>
       <div css={style}></div>
     </Grid>
   )
