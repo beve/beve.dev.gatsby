@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react"
 import gsap from "gsap"
 import { css } from "@emotion/core"
 
-const Cursor = ({ cursorSize = 18, hideCursor = true }) => {
+const Cursor = ({ cursorSize = 25, hideCursor = true }) => {
   const innerCursor = useRef()
   const outerCursor = useRef()
   const mousePosition = useRef({ x: 0, y: 0 })

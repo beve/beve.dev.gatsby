@@ -5,8 +5,8 @@ import { gsap } from "gsap"
 const Jauge = ({
   color,
   value,
-  radius = 42,
-  strokeWidth = 10,
+  radius = 58,
+  strokeWidth = 15,
   label = "React",
 }) => {
 
@@ -52,7 +52,7 @@ const Jauge = ({
               stroke: ${color || theme.colors.primary};
               stroke-width: ${strokeWidth}px;
               fill: none;
-              stroke-linecap: round;
+              // stroke-linecap: round;
               stroke-dasharray: ${length};
               stroke-dashoffset: ${length};
             `
@@ -66,7 +66,7 @@ const Jauge = ({
           dy=".3em"
           css={(theme) => css`
             stroke-width: 0.5px;
-            font-size: 1.4em;
+            font-size: 1.7em;
             stroke: ${color || theme.colors.grey};
           `}
         >
@@ -76,11 +76,10 @@ const Jauge = ({
           x="50%"
           y="50%"
           textAnchor="middle"
-          dy="-.3em"
           dx="1.2em"
           css={(theme) => css`
             stroke-width: 0.5px;
-            font-size: 0.7em;
+            font-size: 0.9em;
             stroke: ${color || theme.colors.grey};
           `}
         >

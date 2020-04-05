@@ -1,12 +1,11 @@
 import React from "react"
 import { css } from "@emotion/core"
 
-const grid = css`
+const grid = (theme) => css`
   display: grid;
   grid-template-columns: repeat(14, 1fr);
-  width: 100%;
-  height: 100vh;
-  border: 1px solid #ccc;
+  border-left: 1px solid ${theme.colors.grid};
+  border-right: 1px solid ${theme.colors.grid};
 `
 
 const Grid = ({ children }) => <div css={grid}>{children}</div>
