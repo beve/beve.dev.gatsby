@@ -26,7 +26,7 @@ const style = theme => css`
 const ContactInfos = () => (
   <div css={style}>
     <div>
-      <a href="mailto:chris@beve.org">chris@beve.org</a>
+      <a href="mailto:chris@beve.org">chris@beve.dev</a>
       <span>+33 (6) 12 52 16 14</span>
     </div>
   </div>
