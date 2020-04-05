@@ -7,6 +7,8 @@ import { Helmet } from "react-helmet"
 import Beve from "./beve"
 import Cursor from "./cursor"
 import Menu from "./menu"
+import Grid from "./grid"
+import ContactInfos from "./contactInfos"
 
 const theme = {
   font: "Open Sans",
@@ -26,17 +28,33 @@ const style = (theme) => css`
   }
 `
 
+const gridStyle = css`
+  max-width: 1440px;
+  margin: 0 auto;
+  min-height: calc( 100vh );
+  grid-template-areas:
+  "logo logo spacer spacer spacer spacer menu menu menu menu menu menu menu menu"
+  "infos infos content content content content content content content content content content content content"
+`
+
+const spacer = theme => css`
+  border-right: 1px solid ${theme.colors.grid};
+  grid-area: spacer;
+`
+
 const Layout = ({ children }) => {
   return (
     <>
       <Helmet></Helmet>
       <ThemeProvider theme={theme}>
         <div css={style}>
-          <Beve />
-          <Menu entries={[]} />
-          <div>
+          <Grid customCss={gridStyle}>
+            <Beve />
+            <div css={spacer}></div>
+            <Menu />
             <main>{children}</main>
-          </div>
+            <ContactInfos />
+          </Grid>
         </div>
         <Cursor />
       </ThemeProvider>

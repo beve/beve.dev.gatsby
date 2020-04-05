@@ -1,13 +1,19 @@
 import React from "react"
 import { css } from "@emotion/core"
 
-const grid = (theme) => css`
+const style = css`
+  box-sizing: border-box;
   display: grid;
   grid-template-columns: repeat(14, 1fr);
-  border-left: 1px solid ${theme.colors.grid};
-  border-right: 1px solid ${theme.colors.grid};
+  grid-template-rows: 140px 1fr;
 `
 
-const Grid = ({ children }) => <div css={grid}>{children}</div>
+const Grid = ({ children, customCss }) => {
+  return (
+    // <div css={theme => ({ ...style, ...customCss })}>
+    <div css={[style, customCss]}>
+      {children}
+    </div>)
+}
 
 export default Grid

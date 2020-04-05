@@ -10,9 +10,11 @@ const style = (theme) => css`
   text-transform: uppercase;
   font-family: 'Open Sans';
   font-weight: 600;
-  font-size: 0.95em;
-  letter-spacing: 1.5px;
+  grid-area: menu;
   a {
+    font-size: 14px;
+    font-size: 0.85em;
+    letter-spacing: 1.8px;
     color: ${theme.colors.text}
   }
 `

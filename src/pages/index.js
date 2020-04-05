@@ -10,9 +10,9 @@ const IndexPage = () => (
   <Layout>
     <SEO title="Home" />
     <Grid>
-      <Jauge value={90} label="React" />
+      {/* <Jauge value={90} label="React" />
       <Jauge value={70} label="Angular" />
-      <Jauge value={80} label="Vanilla JS" />
+      <Jauge value={80} label="Vanilla JS" /> */}
     </Grid>
   </Layout>
 )
