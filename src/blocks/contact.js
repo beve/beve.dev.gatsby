@@ -7,7 +7,7 @@ const style = (theme) => {
 
 }
 
-const MainAnimation = () => {
+const Contact = () => {
   return (
     <Grid customCss={gridCSS}>
       <div css={style}></div>
@@ -15,4 +15,4 @@ const MainAnimation = () => {
   )
 }
 
-export default MainAnimation
+export default Contact 

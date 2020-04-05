@@ -3,11 +3,7 @@ import { css } from '@emotion/core'
 
 import Grid from './grid'
 
-const style = (theme) => {
-
-}
-
-const MainAnimation = () => {
+const Projects = () => {
   return (
     <Grid customCss={gridCSS}>
       <div css={style}></div>
@@ -15,4 +11,4 @@ const MainAnimation = () => {
   )
 }
 
-export default MainAnimation
+export default Projects

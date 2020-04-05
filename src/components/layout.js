@@ -17,6 +17,7 @@ const theme = {
     grid: "#ececec",
     text: "#343434"
   },
+  gridHeight: "140px"
 }
 
 const style = (theme) => css`
@@ -52,18 +53,21 @@ const mainGrid = css`
   "infos main main main main main main"
 `
 const spacer1 = theme => css`
-  border-right: 1px solid ${theme.colors.grid};
   grid-area: spacer1;
+  border-right: 1px solid ${theme.colors.grid};
+  background-color: #fff;
 `
 
 const spacer2 = theme => css`
-  border-right: 1px solid ${theme.colors.grid};
   grid-area: spacer2;
+  border-right: 1px solid ${theme.colors.grid};
+  background-color: #fff;
 `
 
-const main = css`
+const main = theme => css`
   padding-top: 140px;
   grid-area: main;
+  min-height: calc(100vh - ${theme.gridHeight});
 `
 
 const Layout = ({ children }) => {
@@ -79,8 +83,8 @@ const Layout = ({ children }) => {
             <Menu />
           </Grid>
           <Grid customCss={mainGrid}>
-            <main css={main}>{children}</main>
             <ContactInfos />
+            <main css={main}>{children}</main>
           </Grid>
         </div>
         <Cursor />

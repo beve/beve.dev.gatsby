@@ -156,7 +156,6 @@ const Cursor = ({ cursorSize = 25, hideCursor = true }) => {
           border-radius: 50%;
           background-color: ${theme.colors.primary};
           pointer-events: none;
-          mix-blend-mode: difference;
         `}
       ></div>
       <div
@@ -174,7 +173,6 @@ const Cursor = ({ cursorSize = 25, hideCursor = true }) => {
           border: 1px solid ${theme.colors.primary};
           pointer-events: none;
           background-color: transparent;
-          mix-blend-mode: difference;
         `}
       ></div>
     </>

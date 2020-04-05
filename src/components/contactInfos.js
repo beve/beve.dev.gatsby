@@ -8,7 +8,7 @@ const style = theme => css`
   background-color: #fff;
   div {
     position: fixed;
-    bottom: 90px;
+    bottom: 100px;
     margin-left: 24px;
     display: flex;
     flex-flow: column nowrap;
