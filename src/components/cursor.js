@@ -7,7 +7,7 @@ const Cursor = ({ cursorSize = 180, hideCursor = true }) => {
   const outerCursor = useRef()
   const mousePosition = useRef({ x: 0, y: 0 })
   const lockOuter = useRef(false)
-  const hovered = useRef(false)
+  // const hovered = useRef(false)
   const cursorInnerRatio = 0.145
   const cursorInnerRatioBig = 0.435
   const cursorOuterSize = cursorSize * cursorInnerRatioBig;

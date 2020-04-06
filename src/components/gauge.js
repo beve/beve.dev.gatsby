@@ -2,8 +2,9 @@ import React, { useEffect, useRef, useState } from "react"
 import { css } from "@emotion/core"
 import { gsap } from "gsap"
 
-const Jauge = ({
+const Gauge = ({
   color,
+  customCss,
   value,
   radius = 58,
   strokeWidth = 15,
@@ -16,9 +17,10 @@ const Jauge = ({
   
   useEffect(() => {
 
-    let animatedValue = { val: 0 }
+    const animatedValue = { val: 0 }
+    const tl = gsap.timeline({paused: true, delay: Math.random() * 1.5})
 
-    gsap.fromTo(
+    tl.fromTo(
       ref.current,
       {
         opacity: 0.2,
@@ -30,17 +32,19 @@ const Jauge = ({
         ease: "easeOut"
       }
     )
-    gsap.to(animatedValue, 1, {
+    tl.to(animatedValue, 1, {
       val: value,
       roundProps: "val",
       onUpdate: () => {
         set(animatedValue.val)
       },
-    })
+    }, '<')
+
+    tl.play()
   }, [length, value])
 
   return (
-    <div>
+    <div css={customCss}>
       <svg width={radius * 2 + strokeWidth} height={radius * 2 + strokeWidth}>
         <circle
           ref={ref}
@@ -99,4 +103,4 @@ const Jauge = ({
   )
 }
 
-export default Jauge
+export default Gauge

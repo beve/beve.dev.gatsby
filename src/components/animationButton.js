@@ -1,5 +1,4 @@
 import React, { useEffect } from "react"
-import { css } from "@emotion/core"
 import gsap from "gsap";
 import Draggable from "gsap/Draggable";
 import InertiaPlugin from "gsap/InertiaPlugin"

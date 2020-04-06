@@ -6,6 +6,12 @@ import AnimationButton from '../components/animationButton'
 
 const grid = css`
   overflow: hidden;
+  min-height: calc(100vh - 140px);
+`
+
+const cols = css`
+  grid-row: 1;
+  z-index: -1;
 `
 
 const caption = (theme) => css`
@@ -57,7 +63,7 @@ const button = (theme) => css`
 const Landing = () => {
   return (
     <>
-      <Grid gridCss={grid} colsCss={css`z-index: -1`} drawCols={12}>
+      <Grid gridCss={grid} colsCss={cols} drawCols={12}>
         <div css={caption}>
           <div>Make dev.</div>
           <span>great again !</span>
