@@ -5,6 +5,7 @@ import Grid from '../components/grid'
 import AnimationButton from '../components/animationButton'
 
 const grid = css`
+  overflow: hidden;
 `
 
 const caption = (theme) => css`
@@ -50,7 +51,7 @@ const buttonContainer = css`
 `
 
 const button = (theme) => css`
-  transform: translate(calc(-50% - 3px));
+  transform: translateX(calc(-50%));
 `
 
 const Landing = () => {

@@ -1,9 +1,28 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { css } from "@emotion/core"
+import gsap from "gsap";
+import Draggable from "gsap/Draggable";
+import InertiaPlugin from "gsap/InertiaPlugin"
+gsap.registerPlugin(Draggable);
+gsap.registerPlugin(InertiaPlugin);
 
-const AnimationButton = ({customCss}) => {
+const AnimationButton = ({ customCss }) => {
+
+  useEffect(() => {
+      Draggable.create('#animationButton', {
+        type: 'rotation',
+        throwProps: true,
+        dragClickables: true,
+        allowEventDefault: true,
+        dragResistance: 0.3,
+        throwResistance: 15000,
+        inertia: true,
+        snap: (endValue) => Math.round(endValue / 180) * 180 
+      });
+  }, []);
+
   return (
-    <svg viewBox="0 0 158 161.718" height={161.718} width={158} css={customCss}>
+    <svg id="animationButton" viewBox="0 0 161.718 161.718" height={161.718} width={161.718} css={customCss}>
       <path
         d="M80.722 3.68a76.656 76.656 0 0166.386 38.329 76.656 76.656 0 010 76.656 76.656 76.656 0 01-66.386 38.329"
         fill="none"
