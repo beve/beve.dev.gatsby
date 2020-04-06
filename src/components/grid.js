@@ -12,7 +12,7 @@ const cols = css`
   min-height: calc(100vh - 140px);
   grid-row: 1;
   grid-column: auto / auto;
-  &:nth-child(even) {
+  &:nth-of-type(even) {
     border-right: 1px solid #ececec;
   }
 `
