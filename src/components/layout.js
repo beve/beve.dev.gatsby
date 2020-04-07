@@ -61,18 +61,18 @@ const spacer1 = theme => css`
   grid-area: spacer1;
   border-right: 1px solid ${theme.colors.grid};
   background-color: #fff;
-  filter: blur(30px);
-  opacity: .9;
-  backdrop-filter: blur(4px);
+  // filter: blur(30px);
+  // opacity: .9;
+  // backdrop-filter: blur(4px);
 `
 
 const spacer2 = theme => css`
   grid-area: spacer2;
   border-right: 1px solid ${theme.colors.grid};
   background-color: #fff;
-  filter: blur(30px);
-  opacity: .9;
-  backdrop-filter: blur(4px);
+  // filter: blur(30px);
+  // opacity: .9;
+  // backdrop-filter: blur(4px);
 `
 
 const main = theme => css`

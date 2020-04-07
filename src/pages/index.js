@@ -6,13 +6,17 @@ import SEO from "../components/seo"
 import Landing from "../blocks/landing"
 import Skills from "../blocks/skills"
 import Customers from "../blocks/customers"
+import Projects from "../blocks/projects"
+import Contact from "../blocks/contact"
 
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" />
-      <Landing />
-      <Skills />
-      <Customers />
+    <Landing />
+    <Skills />
+    <Customers />
+    <Projects />
+    <Contact />
   </Layout>
 )
 

@@ -6,7 +6,7 @@ import Img from "gatsby-image"
 import Grid from '../components/grid'
 
 const grid = css`
-  grid-template-rows: 210px 160px 160px 190px;
+  grid-template-rows: 300px 160px 160px 190px;
 `
 
 const title = css`
@@ -14,8 +14,8 @@ const title = css`
   grid-row: 1;
   grid-column: 1;
   transform: translateX(-100%);
-  align-self: center;
-  height: 5.5em;
+  align-self: end;
+  height: 140px; // Position of text "Clients" top, use grid template-row height for simulate margin top
   & > div {
     position: absolute;
     font-size: 3.5em;

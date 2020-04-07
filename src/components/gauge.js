@@ -56,7 +56,6 @@ const Gauge = ({
               stroke: ${color || theme.colors.primary};
               stroke-width: ${strokeWidth}px;
               fill: none;
-              // stroke-linecap: round;
               stroke-dasharray: ${length};
               stroke-dashoffset: ${length};
             `

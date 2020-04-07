@@ -9,10 +9,6 @@ const grid = css`
   min-height: calc(100vh - 140px);
 `
 
-const cols = css`
-  z-index: -1;
-`
-
 const caption = (theme) => css`
   display: flex;
   flex-direction: column;
@@ -59,7 +55,7 @@ const button = (theme) => css`
   transform: translateX(calc(-50%));
 `
 
-const Landing = () => {
+export default () => {
   return (
     <>
       <Grid gridCss={grid} drawCols={12}>
@@ -78,5 +74,3 @@ const Landing = () => {
     </>
   )
 }
-
-export default Landing 

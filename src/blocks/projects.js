@@ -1,14 +1,14 @@
 import React from 'react'
 import { css } from '@emotion/core'
 
-import Grid from './grid'
+import Grid from '../components/grid'
 
-const Projects = () => {
+const gridCss = css`
+`
+
+export default () => {
   return (
-    <Grid gridCss={gridCSS}>
-      <div css={style}></div>
+    <Grid gridCss={gridCss}>
     </Grid>
   )
 }
-
-export default Projects
