@@ -95,7 +95,7 @@ const Gauge = ({
           css={(theme) => css`
               stroke-width: 0.5px;
               font-weight: 600;
-              font-size: 1.2em;
+              font-size: 1.3em;
               stroke: ${theme.colors.grey};
             `}
             >

@@ -52,7 +52,7 @@ export default ({ value, height = 10, width = 410, label = 'Arduino', color }) =
     tl.play()
   }, [width, value])
 
-  const rect = theme => css`
+  const svg = theme => css`
     path {
       stroke-linecap: round;
       stroke-width: ${height}px;
@@ -68,7 +68,7 @@ export default ({ value, height = 10, width = 410, label = 'Arduino', color }) =
   `
 
   return (
-    <svg css={rect} viewBox={`0 0 ${width + height + 50} 93`}>
+    <svg css={svg} viewBox={`0 0 ${width + height} 93`}>
       <defs>
         <path id="labelPath" d={`M${halfHeight},${50 - halfHeight} H${computedValue + 120}`} />
       </defs>
@@ -83,17 +83,17 @@ export default ({ value, height = 10, width = 410, label = 'Arduino', color }) =
           css={(theme) => css`
           stroke-width: 0.5px;
           font-weight: 300;
-          font-size: 1.9em;
+          font-size: 1.6em;
           stroke: ${theme.colors.grey};
           `}>
-          <textPath href="#labelPath" startOffset={computedValue - 24}>{computedAnimatedValue}</textPath>
+          <textPath href="#labelPath" startOffset={computedValue - 20}>{computedAnimatedValue}</textPath>
         </text>
         <text
           dy="-31"
           css={(theme) => css`
               stroke-width: 0.5px;
               font-weight: 300;
-              font-size: 1em;
+              font-size: 0.9em;
               stroke: ${theme.colors.grey};
             `}
         >
@@ -106,7 +106,7 @@ export default ({ value, height = 10, width = 410, label = 'Arduino', color }) =
         css={(theme) => css`
             stroke-width: 0.5px;
             font-weight: 600;
-            font-size: 1.2em;
+            font-size: 1.25em;
             stroke: ${theme.colors.grey};
           `}
       >

@@ -21,6 +21,7 @@ const label = css`
 const bars = css`
   box-sizing: border-box;
   display: flex;
+  justify-content: space-between;
   flex-flow: row wrap;
   grid-row: 4;
   grid-column: 1 / span 10;
@@ -72,15 +73,15 @@ const Skills = () => {
       <Gauge customCss={[gauge, css`grid-row: 3; grid-column: 3 / span 2;padding-top: 5px`]} value={80} label="Vanilla JS" />
       <Gauge customCss={[gauge, css`grid-row: 3; grid-column: 5 / span 2;padding-top: 5px`]} value={70} label="Animations" />
       <div css={bars}>
-        <div>
-          <div css={label}>IOT</div>
+        <div css={css`max-width: 46%`}>
+          <div css={[label, css`margin-bottom: 41px`]}>IOT</div>
           <Bar value={70} label="C++" />
           <Bar value={80} label="Arduino" />
           <Bar value={60} label="Conception" />
           <Bar value={60} label="Électronique" />
         </div>
-        <div>
-          <div css={label}>& More</div>
+        <div css={css`max-width: 46%`}>
+          <div css={[label, css`margin-bottom: 41px`]}>& More</div>
           <Bar value={90} label="Impression 3D" />
           <Bar value={60} label="Usinage CNC" />
           <Bar value={90} label="Modélisme (drones, hélicos, FVP...)" />
