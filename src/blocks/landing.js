@@ -10,7 +10,6 @@ const grid = css`
 `
 
 const cols = css`
-  grid-row: 1;
   z-index: -1;
 `
 
@@ -63,7 +62,7 @@ const button = (theme) => css`
 const Landing = () => {
   return (
     <>
-      <Grid gridCss={grid} colsCss={cols} drawCols={12}>
+      <Grid gridCss={grid} drawCols={12}>
         <div css={caption}>
           <div>Make dev.</div>
           <span>great again !</span>

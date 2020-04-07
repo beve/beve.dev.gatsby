@@ -9,7 +9,7 @@ const style = css`
   // min-height: calc(100vh - ${theme.gridHeight});
 
 const cols = css`
-  grid-column: auto / auto;
+  grid-row: 1 / -1;
   &:nth-of-type(even) {
     border-right: 1px solid #ececec;
   }
@@ -22,7 +22,7 @@ const Grid = ({ children, gridCss, drawCols, colsCss }) => {
   }
   return (
     <div css={[style, css`grid-template-columns: repeat(${drawCols}, 1fr)`, gridCss]}>
-      {divs && divs.map((_, i) => <div css={[cols, css`grid-column: ${i+1}`, colsCss]} key={`d${i}`}></div>)}
+      {divs && divs.map((_, i) => <section css={[cols, css`grid-column: ${i+1}`, colsCss]} key={`d${i}`}></section>)}
       {children}
     </div>
   )

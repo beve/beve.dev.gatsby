@@ -8,17 +8,13 @@ const grid = css`
   grid-template-rows: 220px 220px 150px;
 `
 
-const cols = css`
-  grid-row: 1 / span 3
-`
-
 const gauge = css`
   margin: 0 auto;
 `
 
 const Skills = () => {
   return (
-    <Grid gridCss={grid} drawCols={12} colsCss={cols}>
+    <Grid gridCss={grid} drawCols={12}>
       <Gauge customCss={[gauge, css`grid-row: 2; grid-column: 1 / span 2`]} value={90} label="React" />
       <Gauge customCss={[gauge, css`grid-row: 2; grid-column: 3 / span 2`]} value={70} label="Angular" />
       <Gauge customCss={[gauge, css`grid-row: 3; grid-column: 3 / span 2`]} value={80} label="Vanilla JS" />
