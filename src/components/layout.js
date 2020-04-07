@@ -41,6 +41,7 @@ const topGrid = css`
   grid-template-columns: repeat(7, 1fr);
   width: 100vw;
   max-width: 1440px;
+  transform: translateX(0);
   grid-template-areas:
   "logo spacer1 spacer2 menu menu menu menu";
 
