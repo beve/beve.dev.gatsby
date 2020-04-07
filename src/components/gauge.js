@@ -45,7 +45,7 @@ const Gauge = ({
 
   return (
     <div css={customCss}>
-      <svg width={radius * 2 + strokeWidth} height={radius * 2 + strokeWidth}>
+      <svg viewBox={`0 0 ${radius * 2 + strokeWidth} ${radius * 2 + strokeWidth}`}>
         <circle
           ref={ref}
           cx={radius + strokeWidth / 2}
