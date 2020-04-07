@@ -9,7 +9,7 @@ export default ({ value, height = 10 }) => {
   }, [])
 
   var size = 410;
-  var halfHeight = height/2;
+  var halfHeight = height / 2;
 
   const rect = theme => css`
     path {
@@ -26,12 +26,16 @@ export default ({ value, height = 10 }) => {
   `
 
   return (
-    <svg css={rect} width={`${size+height}`}>
+    <svg css={rect} width={`${size + height}`}>
       <g fill="none">
-        <path d={`M${halfHeight} ${halfHeight} H${size+halfHeight}`} />
-        <path d={`M${halfHeight} ${halfHeight} H${size/2+halfHeight}`} />
+        <path d={`M${halfHeight},${halfHeight} H${size + halfHeight}`} />
+        <path d={`M${halfHeight},${halfHeight} H${size / 2 + halfHeight}`} />
       </g>
-    </svg>
+      <path id="p1" d={`M${halfHeight},${halfHeight} H${size / 2 + halfHeight}`} />
+      <text>
+        <textPath href="#p1" >1test text</textPath>
+      </text>
+    </svg >
   )
 
 }
