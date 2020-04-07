@@ -44,7 +44,7 @@ const Gauge = ({
   }, [length, value])
 
   return (
-    <div css={customCss}>
+    <div css={[css`font-weight: 300`, customCss]}>
       <svg viewBox={`0 0 ${radius * 2 + strokeWidth} ${radius * 2 + strokeWidth + 1}`}>
         <circle
           ref={ref}
@@ -69,7 +69,7 @@ const Gauge = ({
           dy=".3em"
           css={(theme) => css`
             stroke-width: 0.5px;
-            font-size: 1.7em;
+            font-size: 1.6em;
             stroke: ${color || theme.colors.grey};
           `}
         >
