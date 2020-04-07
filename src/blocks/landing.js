@@ -23,7 +23,7 @@ const caption = (theme) => css`
   margin-top: -120px;
   font-weight: bold;
   span {
-    color: ${theme.colors.primary};
+    color: ${theme.colors.title};
   }
 `
 
