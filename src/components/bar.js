@@ -1,26 +1,68 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { css } from '@emotion/core'
-import gasp from 'gsap'
+import gsap from 'gsap'
 
-export default ({ value, height = 10, width = 410, label = 'Arduino' }) => {
-
-  useEffect(() => {
-
-  }, [])
+export default ({ value, height = 10, width = 410, label = 'Arduino', color }) => {
 
   const halfHeight = height / 2;
   const computedValue = width * value / 100;
+  const ref = useRef()
+  const valRef = useRef()
+  const [computedAnimatedValue, set] = useState(0)
+
+  useEffect(() => {
+
+    const animatedValue = { val: 0 }
+    const tl = gsap.timeline({ paused: true, delay: Math.random() * 1.5 })
+
+    // Bar length
+    tl.fromTo(
+      ref.current,
+      {
+        opacity: 0.2,
+      },
+      {
+        duration: 1,
+        strokeDashoffset: width - (width / 100) * value,
+        opacity: 1,
+        ease: "easeOut"
+      }
+    )
+    // Numbers
+    tl.fromTo(
+      valRef.current,
+      {
+        opacity: 0,
+      },
+      {
+        duration: 1,
+        opacity: 1,
+        ease: "easeOut"
+      }, '<'
+    )
+    // Val displayed (text)
+    tl.to(animatedValue, 1, {
+      val: value,
+      roundProps: "val",
+      onUpdate: () => {
+        set(animatedValue.val)
+      },
+    }, '<')
+
+    tl.play()
+  }, [width, value])
 
   const rect = theme => css`
     path {
       stroke-linecap: round;
       stroke-width: ${height}px;
-      stroke-dashoffect: 0;
       &:first-child {
-        stroke: ${theme.colors.grid};
+        stroke: ${color || theme.colors.grid};
       }
       &:last-child {
-        stroke: ${theme.colors.primary};
+        stroke: ${color || theme.colors.primary};
+        stroke-dasharray: ${width};
+        stroke-dashoffset: ${width};
       }
     }
   `
@@ -32,29 +74,32 @@ export default ({ value, height = 10, width = 410, label = 'Arduino' }) => {
       </defs>
       <g fill="none">
         <path d={`M${halfHeight},${50 - halfHeight} H${width + halfHeight}`} />
-        <path d={`M${halfHeight},${50 - halfHeight} H${computedValue}`} />
+        {/* <path ref={ref} d={`M${halfHeight},${50 - halfHeight} H${computedValue}`} /> */}
+        <path ref={ref} d={`M${halfHeight},${50 - halfHeight} H${width + halfHeight}`} />
       </g>
-      <text 
-      dy="-22"
-      css={(theme) => css`
-        stroke-width: 0.5px;
-        font-weight: 300;
-        font-size: 1.9em;
-        stroke: ${theme.colors.grey};
-        `}>
-        <textPath href="#labelPath" startOffset={computedValue - 24}>{value}</textPath>
-      </text>
-      <text
-        dy="-31"
-        css={(theme) => css`
-            stroke-width: 0.5px;
-            font-weight: 300;
-            font-size: 1em;
-            stroke: ${theme.colors.grey};
-          `}
-      >
-        <textPath href="#labelPath" startOffset={computedValue + 12}>%</textPath>
+      <g ref={valRef} css={css`opacity: 0`}>
+        <text
+          dy="-22"
+          css={(theme) => css`
+          stroke-width: 0.5px;
+          font-weight: 300;
+          font-size: 1.9em;
+          stroke: ${theme.colors.grey};
+          `}>
+          <textPath href="#labelPath" startOffset={computedValue - 24}>{computedAnimatedValue}</textPath>
         </text>
+        <text
+          dy="-31"
+          css={(theme) => css`
+              stroke-width: 0.5px;
+              font-weight: 300;
+              font-size: 1em;
+              stroke: ${theme.colors.grey};
+            `}
+        >
+          <textPath href="#labelPath" startOffset={computedValue + 12}>%</textPath>
+        </text>
+      </g>
       <text
         dy="-22"
         dx="-2"
@@ -64,7 +109,7 @@ export default ({ value, height = 10, width = 410, label = 'Arduino' }) => {
             font-size: 1.2em;
             stroke: ${theme.colors.grey};
           `}
-          >
+      >
         <textPath href="#labelPath" startOffset={0}>{label}</textPath>
       </text>
     </svg >

@@ -12,7 +12,7 @@ const Gauge = ({
 }) => {
 
   const ref = useRef()
-  const [v, set] = useState(0)
+  const [computedAnimatedValue, set] = useState(0)
   const length = 2 * Math.PI * radius
   
   useEffect(() => {
@@ -73,7 +73,7 @@ const Gauge = ({
             stroke: ${color || theme.colors.grey};
           `}
         >
-          {v}
+          {computedAnimatedValue}
         </text>
         <text
           x="50%"
