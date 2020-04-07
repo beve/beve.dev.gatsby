@@ -45,10 +45,10 @@ const Gauge = ({
 
   return (
     <div css={[css`font-weight: 300`, customCss]}>
-      <svg viewBox={`0 0 ${radius * 2 + strokeWidth} ${radius * 2 + strokeWidth + 1}`}>
+      <svg viewBox={`0 0 ${(radius * 2 + strokeWidth) * 1.5} ${(radius * 2 + strokeWidth) * 1.5}`}>
         <circle
           ref={ref}
-          cx={radius + strokeWidth / 2}
+          cx={(radius + strokeWidth / 2) * 1.5}
           cy={radius + strokeWidth / 2}
           r={radius}
           css={(theme) =>
@@ -63,7 +63,7 @@ const Gauge = ({
         />
         <text
           x="50%"
-          y="50%"
+          y="35%"
           textAnchor="middle"
           dx="-.2em"
           dy=".3em"
@@ -77,7 +77,7 @@ const Gauge = ({
         </text>
         <text
           x="50%"
-          y="50%"
+          y="35%"
           textAnchor="middle"
           dx="1.2em"
           css={(theme) => css`
@@ -88,16 +88,20 @@ const Gauge = ({
         >
           %
         </text>
+        <text
+          x="50%"
+          y="85%"
+          textAnchor="middle"
+          css={(theme) => css`
+              stroke-width: 0.5px;
+              font-weight: 600;
+              font-size: 1.2em;
+              stroke: ${theme.colors.grey};
+            `}
+            >
+            {label}
+        </text>
       </svg>
-      <div
-        css={css`
-          text-align: center;
-          font-weight: bold;
-          margin-top: 10px;
-        `}
-      >
-        {label}
-      </div>
     </div>
   )
 }

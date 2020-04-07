@@ -2,14 +2,14 @@ import React, { useEffect } from 'react'
 import { css } from '@emotion/core'
 import gasp from 'gsap'
 
-export default ({ value, height = 10 }) => {
+export default ({ value, height = 10, width = 410, label = 'Arduino' }) => {
 
   useEffect(() => {
 
   }, [])
 
-  var size = 410;
-  var halfHeight = height / 2;
+  const halfHeight = height / 2;
+  const computedValue = width * value / 100;
 
   const rect = theme => css`
     path {
@@ -26,14 +26,46 @@ export default ({ value, height = 10 }) => {
   `
 
   return (
-    <svg css={rect} width={`${size + height}`}>
+    <svg css={rect} viewBox={`0 0 ${width + height + 50} 93`}>
+      <defs>
+        <path id="labelPath" d={`M${halfHeight},${50 - halfHeight} H${computedValue + 120}`} />
+      </defs>
       <g fill="none">
-        <path d={`M${halfHeight},${halfHeight} H${size + halfHeight}`} />
-        <path d={`M${halfHeight},${halfHeight} H${size / 2 + halfHeight}`} />
+        <path d={`M${halfHeight},${50 - halfHeight} H${width + halfHeight}`} />
+        <path d={`M${halfHeight},${50 - halfHeight} H${computedValue}`} />
       </g>
-      <path id="p1" d={`M${halfHeight},${halfHeight} H${size / 2 + halfHeight}`} />
-      <text>
-        <textPath href="#p1" >1test text</textPath>
+      <text 
+      dy="-22"
+      css={(theme) => css`
+        stroke-width: 0.5px;
+        font-weight: 300;
+        font-size: 1.9em;
+        stroke: ${theme.colors.grey};
+        `}>
+        <textPath href="#labelPath" startOffset={computedValue - 24}>{value}</textPath>
+      </text>
+      <text
+        dy="-31"
+        css={(theme) => css`
+            stroke-width: 0.5px;
+            font-weight: 300;
+            font-size: 1em;
+            stroke: ${theme.colors.grey};
+          `}
+      >
+        <textPath href="#labelPath" startOffset={computedValue + 12}>%</textPath>
+        </text>
+      <text
+        dy="-22"
+        dx="-2"
+        css={(theme) => css`
+            stroke-width: 0.5px;
+            font-weight: 600;
+            font-size: 1.2em;
+            stroke: ${theme.colors.grey};
+          `}
+          >
+        <textPath href="#labelPath" startOffset={0}>{label}</textPath>
       </text>
     </svg >
   )

@@ -11,7 +11,6 @@ const grid = css`
 
 const gauge = css`
   margin: 0 auto;
-  max-width: 70%;
 `
 
 const label = css`
@@ -71,14 +70,21 @@ const Skills = () => {
       <Gauge customCss={[gauge, css`grid-row: 2; grid-column: 7 / span 2;align-self: center`]} value={90} label="Php" />
       <Gauge customCss={[gauge, css`grid-row: 2; grid-column: 9 / span 2;align-self: center`]} value={70} label="Admin système" />
       <Gauge customCss={[gauge, css`grid-row: 3; grid-column: 3 / span 2;padding-top: 5px`]} value={80} label="Vanilla JS" />
-      <Gauge customCss={[gauge, css`grid-row: 3; grid-column: 5 / span 2;padding-top: 5px`]} value={70} label="Animations Css/SVG/Canvas" />
+      <Gauge customCss={[gauge, css`grid-row: 3; grid-column: 5 / span 2;padding-top: 5px`]} value={70} label="Animations" />
       <div css={bars}>
         <div>
           <div css={label}>IOT</div>
-          <Bar value={90} />
+          <Bar value={70} label="C++" />
+          <Bar value={80} label="Arduino" />
+          <Bar value={60} label="Conception" />
+          <Bar value={60} label="Électronique" />
         </div>
         <div>
           <div css={label}>& More</div>
+          <Bar value={90} label="Impression 3D" />
+          <Bar value={60} label="Usinage CNC" />
+          <Bar value={90} label="Modélisme (drones, hélicos, FVP...)" />
+          <Bar value={60} label="3D industrielle" />
         </div>
       </div>
     </Grid>
