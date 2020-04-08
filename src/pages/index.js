@@ -2,26 +2,17 @@ import React from "react"
 import { Router } from "@reach/router"
 
 import Layout from "../components/layout"
-import SEO from "../components/seo"
-
-import Landing from "../blocks/landing"
-import Skills from "../blocks/skills"
-import Customers from "../blocks/customers"
-import Projects from "../blocks/projects"
-import Contact from "../blocks/contact"
-import Project from "../blocks/project"
+import Home from "../blocks/home"
+import NotFoundPage from "./404"
 
 const IndexPage = () => (
   <Layout>
     <Router>
-      <Project path="/project/yolo" />
+      <Home path="/" />
+      <Home path="/p/*" />
+      <Home path="/project/*" />
+      <NotFoundPage default />
     </Router>
-    <SEO title="Accueil" />
-    <Landing />
-    <Skills />
-    <Projects />
-    <Customers />
-    <Contact />
   </Layout>
 )
 

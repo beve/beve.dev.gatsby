@@ -15,14 +15,18 @@ const Projects = ({ data }) => {
       {data.allDatoCmsProject.edges.map((project, i) => {
         const row = [1, 2, 4, 5][i % 4]
         const col = [6, 1][i % 2]
+        const path = `project/${project.node.name.replace(' ', '-').toLowerCase()}`
         return (
-          <Project
-            key={project.node.id}
-            name={project.node.name}
-            illustration={project.node.illustration.fluid}
-            logo={project.node.logo.fluid}
-            customCss={css`grid-row: ${row} / span 2; grid-column: ${col} / span 5`}
-          />
+          // <TransitionLink to={path}>
+            <Project
+              key={project.node.id}
+              name={project.node.name}
+              illustration={project.node.illustration.fluid}
+              logo={project.node.logo.fluid}
+              path={path}
+              customCss={css`grid-row: ${row} / span 2; grid-column: ${col} / span 5`}
+            />
+          // </TransitionLink>
         )
       }
       )}

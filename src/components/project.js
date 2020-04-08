@@ -1,6 +1,7 @@
 import React from 'react'
 import Img from 'gatsby-image'
 import { css } from '@emotion/core'
+import TransitionLink from 'gatsby-plugin-transition-link'
 
 const style = css`
   position: relative;
@@ -17,19 +18,20 @@ const style = css`
   }
 `
 
-export default ({ customCss, id, name, illustration, logo }) => {
+export default ({ customCss, id, name, illustration, logo, path }) => {
   return (
     <div css={[style, customCss]}>
-      <Img
-        imgStyle={{ objectFit: 'cover' }}
-        fluid={illustration} />
-      {<Img 
-        fluid={logo} 
-        // css={css`position: absolute; left: 50%; right: 50%; transform: translate(-50%, -50%)`}
-        style={{position: 'absolute', left: '50%', right: '50%', transform: 'translate(-50%, -50%)'}}
-      />}
-      <span></span>
-      <div css={css`
+      <TransitionLink to={path}>
+        <Img
+          imgStyle={{ objectFit: 'cover' }}
+          fluid={illustration} />
+        {<Img
+          fluid={logo}
+          // css={css`position: absolute; left: 50%; right: 50%; transform: translate(-50%, -50%)`}
+          style={{ position: 'absolute', left: '50%', right: '50%', transform: 'translate(-50%, -50%)' }}
+        />}
+        <span></span>
+        <div css={css`
         position: absolute;
         left: 0;
         right: 0;
@@ -39,6 +41,7 @@ export default ({ customCss, id, name, illustration, logo }) => {
         font-size: 1.85em;
         opacity: 1;
       `}>{name}</div>
+      </TransitionLink>
     </div>
   )
 }
