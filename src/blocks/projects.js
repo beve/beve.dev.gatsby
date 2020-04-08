@@ -6,7 +6,7 @@ import Grid from '../components/grid'
 import Project from '../components/project'
 
 const gridCss = css`
-  grid-template-rows: repeat(6, 260px);
+  grid-template-rows: repeat(6, 1fr);
 `
 
 const Projects = ({ data }) => {

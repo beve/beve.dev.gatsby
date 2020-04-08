@@ -4,14 +4,16 @@ import { css } from '@emotion/core'
 
 const style = css`
   position: relative;
+  overflow: hidden;
   & > span {
     position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: red;
-    opacity: 0.1;
+    top: -25%;
+    bottom: -25%;
+    left: -25%;
+    right: -25%;
+    background-color: #e73c36;
+    border-radius: 50%;
+    opacity: 0.9;
   }
 `
 
@@ -21,7 +23,11 @@ export default ({ customCss, id, name, illustration, logo }) => {
       <Img
         imgStyle={{ objectFit: 'cover' }}
         fluid={illustration} />
-      {/* <Img fluid={logo} /> */}
+      {<Img 
+        fluid={logo} 
+        // css={css`position: absolute; left: 50%; right: 50%; transform: translate(-50%, -50%)`}
+        style={{position: 'absolute', left: '50%', right: '50%', transform: 'translate(-50%, -50%)'}}
+      />}
       <span></span>
       <div css={css`
         position: absolute;

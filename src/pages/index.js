@@ -1,4 +1,5 @@
 import React from "react"
+import { Router } from "@reach/router"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -8,10 +9,14 @@ import Skills from "../blocks/skills"
 import Customers from "../blocks/customers"
 import Projects from "../blocks/projects"
 import Contact from "../blocks/contact"
+import Project from "../blocks/project"
 
 const IndexPage = () => (
   <Layout>
-    <SEO title="Home" />
+    <Router>
+      <Project path="/project/yolo" />
+    </Router>
+    <SEO title="Accueil" />
     <Landing />
     <Skills />
     <Projects />
