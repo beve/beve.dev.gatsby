@@ -41,6 +41,9 @@ const Gauge = ({
     }, '<')
 
     tl.play()
+    return (() => {
+      tl.clear()
+    })
   }, [length, value])
 
   return (
