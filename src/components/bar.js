@@ -56,10 +56,10 @@ export default ({ value, height = 10, width = 410, label = 'Arduino', color }) =
     path {
       stroke-linecap: round;
       stroke-width: ${height}px;
-      &:first-child {
+      &:first-of-type {
         stroke: ${color || theme.colors.grid};
       }
-      &:last-child {
+      &:last-of-type {
         stroke: ${color || theme.colors.primary};
         stroke-dasharray: ${width};
         stroke-dashoffset: ${width};

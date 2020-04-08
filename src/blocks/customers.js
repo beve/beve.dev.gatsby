@@ -34,10 +34,10 @@ const Customers = ({ data }) => {
         const [_, row, col] = image.node.name.match(/^[0-9]{2}-([0-9]{1})-([0-9]{1}).*/) // eslint-disable-line
         return (
           <div
+            key={`${row}-${col}`}
             css={css`max-width: 100%; width: 90%; grid-row:${row}; grid-column:${col} / span 2; align-self: center; justify-self: center;`}
           >
             <Img
-              key={`${row}-${col}`}
               fluid={image.node.childImageSharp.fluid}
               loading="eager"
               style={{maxHeight: '80px'}}

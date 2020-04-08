@@ -31,10 +31,10 @@ const bars = css`
   border-left: none;
   padding: 60px 60px 80px 60px;
   & > div {
-    &:first-child {
+    &:first-of-type {
       flex: 1 1 50%;
     }
-    &:last-child {
+    &:last-of-type {
       flex: 1 1 50%;
     }
   }
