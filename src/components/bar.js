@@ -50,6 +50,9 @@ export default ({ value, height = 10, width = 410, label = 'Arduino', color }) =
     }, '<')
 
     tl.play()
+    return (() => {
+      tl.clear();
+    })
   }, [width, value])
 
   const svg = theme => css`

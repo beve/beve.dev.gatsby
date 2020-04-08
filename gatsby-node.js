@@ -57,14 +57,14 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   })
 }
 
-exports.onCreatePage = async ({ page, actions }) => {
-  const { createPage } = actions
+// exports.onCreatePage = async ({ page, actions }) => {
+//   const { createPage } = actions
 
-  // Own routing
-  if (page.path.match(/project\/*/)) {
-    page.matchPath = '/project/*'
-  } else if (page.path === '/') {
-    page.matchPath = '/*'
-  }
-  createPage(page)
-}
+//   // Own routing
+//   if (page.path.match(/project\/*/)) {
+//     page.matchPath = '/project/*'
+//   } else if (page.path === '/') {
+//     page.matchPath = '/*'
+//   }
+//   createPage(page)
+// }

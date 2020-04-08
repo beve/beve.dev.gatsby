@@ -6,14 +6,13 @@ import Home from "../blocks/home"
 import NotFoundPage from "./404"
 
 const IndexPage = () => (
-  <Layout>
-    <Router>
-      <Home path="/" />
-      <Home path="/p/*" />
-      <Home path="/project/*" />
-      <NotFoundPage default />
-    </Router>
-  </Layout>
+  // <Router>
+  //   <Home path="/" />
+  //   <Home path="/p/*" />
+  //   <Home path="/project/*" />
+  //   <NotFoundPage default />
+  // </Router>
+  <Home />
 )
 
 export default IndexPage

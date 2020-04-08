@@ -9,8 +9,8 @@ import Projects from "../blocks/projects"
 import Contact from "../blocks/contact"
 // import Project from "../blocks/project"
 
-export default ({ location }) => {
-  const project = location.pathname.match(/^\/project\/([a-z]+)$/)
+export default () => {
+  // const project = location.pathname.match(/^\/project\/([a-z]+)$/)
   return (
     <>
       <SEO title="Accueil" />

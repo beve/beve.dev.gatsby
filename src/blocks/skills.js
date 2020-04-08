@@ -11,6 +11,7 @@ const grid = css`
 
 const gauge = css`
   margin: 0 auto;
+  width: 100%;
 `
 
 const label = css`

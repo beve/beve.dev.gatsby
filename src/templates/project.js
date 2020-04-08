@@ -19,9 +19,7 @@ const container = css`
 const ProjectPage = () => (
   <>
     <SEO title="Projets" />
-    <Layout>
-      <Grid drawCols={12}>Projet Component</Grid>
-    </Layout>
+    <Grid drawCols={12}>Projet Component</Grid>
   </>
 )
 

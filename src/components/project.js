@@ -2,6 +2,7 @@ import React from 'react'
 import Img from 'gatsby-image'
 import { css } from '@emotion/core'
 import TransitionLink from 'gatsby-plugin-transition-link'
+import gsap from 'gsap'
 
 const style = css`
   position: relative;
@@ -21,7 +22,21 @@ const style = css`
 export default ({ customCss, id, name, illustration, logo, path }) => {
   return (
     <div css={[style, customCss]}>
-      <TransitionLink to={path}>
+      <TransitionLink 
+        to={path}
+        entry={{
+          delay: 2,
+          trigger: ({ exit, node }) => {
+            gsap.fromTo(node, {opacity: 0}, {duration: 1, opacity: 1})
+          }
+        }}
+        exit={{
+          zIndex: 1,
+          trigger: ({ exit, node }) => {
+            gsap.fromTo(node, {opacity: 1}, {duration: 1, opacity: 0})
+          }
+        }}
+       preventScrollJump>
         <Img
           imgStyle={{ objectFit: 'cover' }}
           fluid={illustration} />
