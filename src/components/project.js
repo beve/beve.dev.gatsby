@@ -6,7 +6,6 @@ import gsap from 'gsap'
 
 const style = css`
   position: relative;
-  overflow: hidden;
   & > span {
     position: absolute;
     top: -25%;

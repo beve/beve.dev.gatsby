@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import { css } from "@emotion/core"
 import { ThemeProvider } from "emotion-theming"
 import { Helmet } from "react-helmet"
-import { TransitionPortal } from "gatsby-plugin-transition-link";
+// import { TransitionPortal } from "gatsby-plugin-transition-link";
 
 
 import Beve from "./beve"
@@ -45,7 +45,7 @@ const topGrid = css`
   max-width: 1440px;
   transform: translateX(0);
   grid-template-areas:
-  "logo spacer1 spacer2 menu menu menu menu";
+  "logo ... ... menu menu menu menu";
 
   @media screen and (min-width: 1440px) {
     left: 50%;
@@ -62,23 +62,23 @@ const mainGrid = css`
   "main main main main main main main"
 `
 
-const spacer1 = theme => css`
-  grid-area: spacer1;
-  border-right: 1px solid ${theme.colors.grid};
-  // background-color: #fff;
-  // filter: blur(30px);
-  // opacity: .9;
-  // backdrop-filter: blur(4px);
-`
+// const spacer1 = theme => css`
+//   grid-area: spacer1;
+//   border-right: 1px solid ${theme.colors.grid};
+//   // background-color: #fff;
+//   // filter: blur(30px);
+//   // opacity: .9;
+//   // backdrop-filter: blur(4px);
+// `
 
-const spacer2 = theme => css`
-  grid-area: spacer2;
-  border-right: 1px solid ${theme.colors.grid};
-  // background-color: #fff;
-  // filter: blur(30px);
-  // opacity: .9;
-  // backdrop-filter: blur(4px);
-`
+// const spacer2 = theme => css`
+//   grid-area: spacer2;
+//   border-right: 1px solid ${theme.colors.grid};
+//   // background-color: #fff;
+//   // filter: blur(30px);
+//   // opacity: .9;
+//   // backdrop-filter: blur(4px);
+// `
 
 const bottomGrid = css`
   position: fixed;
@@ -109,14 +109,14 @@ const Layout = ({ children }) => {
       <Helmet></Helmet>
       <ThemeProvider theme={theme}>
         <div css={style}>
-          <TransitionPortal>
+          {/* <TransitionPortal> */}
             <Grid gridCss={topGrid}>
               <Beve />
-              <div css={spacer1}></div>
-              <div css={spacer2}></div>
+              {/* <div css={spacer1}></div>
+              <div css={spacer2}></div> */}
               <Menu />
             </Grid>
-          </TransitionPortal>
+          {/* </TransitionPortal> */}
           <Grid gridCss={mainGrid}>
             <main css={main}>{children}</main>
           </Grid>

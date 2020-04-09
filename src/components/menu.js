@@ -2,11 +2,13 @@ import React from "react"
 import { css } from "@emotion/core"
 
 const style = (theme) => css`
+  box-sizing: border-box;
   display: flex;
   grid-area: menu;
-  height: 139px;
-  right: 0;
+  height: 140px;
+  margin-left: -1px;
   border-bottom: 1px solid ${theme.colors.grid};
+  border-left: 1px solid ${theme.colors.grid};
   border-right: 1px solid ${theme.colors.grid};
   justify-content: space-evenly; 
   align-items: center;

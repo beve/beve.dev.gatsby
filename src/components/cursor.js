@@ -156,7 +156,7 @@ const Cursor = ({ cursorSize = 180, hideCursor = true }) => {
         ref={innerCursor}
         css={(theme) => css`
           position: fixed;
-          z-index: 10;
+          z-index: 100000;
           top: 0;
           left: 0;
           width: ${cursorSize}px;
@@ -170,7 +170,7 @@ const Cursor = ({ cursorSize = 180, hideCursor = true }) => {
         ref={outerCursor}
         css={(theme) => css`
           position: fixed;
-          z-index: 10;
+          z-index: 100000;
           top: 0;
           left: 0;
           opacity: 0;

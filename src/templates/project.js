@@ -17,10 +17,12 @@ const container = css`
 `
 
 const ProjectPage = () => (
-  <>
-    <SEO title="Projets" />
-    <Grid drawCols={12}>Projet Component</Grid>
-  </>
+  <Layout>
+    <div css={container}>
+      <SEO title="Projets" />
+      <Grid drawCols={12}>Projet Component</Grid>
+    </div>
+  </Layout>
 )
 
 export default ProjectPage
