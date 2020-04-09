@@ -45,7 +45,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   // Create pages 
   const template = path.resolve(`src/templates/project.js`)
   result.data.allDatoCmsProject.edges.forEach(({ node }) => {
-    const path = `project/${node.name.replace(' ', '-').toLowerCase()}`
+    const path = `projet/${node.name.replace(' ', '-').toLowerCase()}`
     createPage({
       path,
       component: template,

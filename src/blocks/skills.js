@@ -6,7 +6,7 @@ import Gauge from '../components/gauge'
 import Bar from '../components/bar'
 
 const grid = css`
-  grid-template-rows: 450px 260px 280px 560px;
+  grid-template-rows: 490px 280px 280px 560px;
 `
 
 const gauge = css`
@@ -46,7 +46,7 @@ const title = css`
   grid-row: 1;
   grid-column: 2 / span 3;
   // transform: translateX(-100%);
-  padding-top: 130px;
+  padding-top: 100px;
   align-self: start;
     font-size: 3.5em;
     letter-spacing: 1px;

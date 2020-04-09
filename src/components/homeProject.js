@@ -18,30 +18,29 @@ const style = css`
   }
 `
 
-export default ({ customCss, id, name, illustration, logo, path }) => {
+export default ({ customCss, name, illustration, logo, path }) => {
   return (
     <div css={[style, customCss]}>
-      <TransitionLink 
+      <TransitionLink
         to={path}
         entry={{
-          delay: 2,
           trigger: ({ exit, node }) => {
-            gsap.fromTo(node, {opacity: 0}, {duration: 1, opacity: 1})
+            gsap.fromTo(node, { opacity: 0 }, { duration: 1, opacity: 1 })
           }
         }}
         exit={{
           zIndex: 1,
           trigger: ({ exit, node }) => {
-            gsap.fromTo(node, {opacity: 1}, {duration: 1, opacity: 0})
+            gsap.fromTo(node, { opacity: 1 }, { duration: 0.1, opacity: 0 })
           }
         }}
-       preventScrollJump>
+        preventScrollJump>
         <Img
-          imgStyle={{ objectFit: 'cover' }}
-          fluid={illustration} />
+          fluid={illustration}
+          loading="eager"
+        />
         {<Img
           fluid={logo}
-          // css={css`position: absolute; left: 50%; right: 50%; transform: translate(-50%, -50%)`}
           style={{ position: 'absolute', left: '50%', right: '50%', transform: 'translate(-50%, -50%)' }}
         />}
         <span></span>

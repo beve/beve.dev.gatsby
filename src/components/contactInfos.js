@@ -6,7 +6,7 @@ const style = css`
   div {
     display: flex;
     flex-flow: column nowrap;
-    transform: rotate(270deg) translate(135px, -14px);
+    transform: rotate(270deg) translate(132px, -10px);
     a {
       font-weight: 300;
     }
