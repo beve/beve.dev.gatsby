@@ -2,6 +2,7 @@ import React from 'react'
 import { css } from '@emotion/core'
 
 import Grid from '../components/grid'
+import Slider from '../components/slider'
 
 const gridCss = css`
   grid-template-rows: 280px 1fr 190px;
@@ -21,6 +22,7 @@ const formCss = css`
     font-weight: 300;
     padding: 20px 30px 24px 30px;
     &:focus {
+      transition: all 0.3s;
       background-color: #333;
       color: #fff;
     }
@@ -51,9 +53,12 @@ const title = css`
 
 const submit = css`
   grid-row: 3;
-  grid-column: 7 / span 2;
+  grid-column: 7 / span 6;
+  width: 432px;
   align-self: center;
   justify-self: center;
+  margin-top: 20px;
+  margin-left: -85px;
 `
 
 export default () => {
@@ -67,7 +72,7 @@ export default () => {
         <input type="email" placeholder="Email"></input>
         <textarea placeholder="Message"></textarea>
       </div>
-      <div css={submit}>submit</div>
+      <div css={submit}><Slider /></div>
     </Grid>
   )
 }

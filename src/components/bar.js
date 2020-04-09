@@ -10,6 +10,7 @@ export default ({ value, height = 10, width = 410, label = 'Arduino', color }) =
   const valRef = useRef()
   const [computedAnimatedValue, set] = useState(0)
 
+  /*
   useEffect(() => {
 
     const animatedValue = { val: 0 }
@@ -54,6 +55,7 @@ export default ({ value, height = 10, width = 410, label = 'Arduino', color }) =
       tl.clear();
     })
   }, [width, value])
+  */
 
   const svg = theme => css`
     path {

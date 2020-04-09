@@ -15,8 +15,8 @@ const Gauge = ({
   const [computedAnimatedValue, set] = useState(0)
   const length = 2 * Math.PI * radius
   
+  /*
   useEffect(() => {
-
     const animatedValue = { val: 0 }
     const tl = gsap.timeline({paused: true, delay: Math.random() * 1.5})
 
@@ -40,11 +40,12 @@ const Gauge = ({
       },
     }, '<')
 
-    tl.play()
+    // tl.play()
     return (() => {
       tl.clear()
     })
   }, [length, value])
+  */
 
   return (
     <div css={[css`font-weight: 300`, customCss]}>

@@ -1,4 +1,5 @@
 import React, { useEffect } from "react"
+import css from '@emotion/core'
 import gsap from "gsap"
 import Draggable from "gsap/Draggable"
 import InertiaPlugin from "gsap/InertiaPlugin"
@@ -24,9 +25,9 @@ const AnimationButton = ({ customCss }) => {
   return (
     <svg
       id="animationButton"
-      viewBox="0 0 161.718 161.718"
-      height={161.718}
-      width={161.718}
+      viewBox="0 0 162 162"
+      height={162}
+      width={162}
       css={customCss}
     >
       <path

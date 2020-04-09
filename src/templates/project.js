@@ -9,8 +9,7 @@ import Grid from "../components/grid"
 import Layout from "../components/layout"
 
 const gridCss = css`
-  box-sizing: border-box!important;
-  grid-template-rows: 225px calc(100% - 225px);
+  grid-template-rows: 225px 260px 1fr;
   height: 100vh;
 `
 
@@ -22,13 +21,6 @@ const illustrations = css`
 const sheet = css`
   grid-row: 2;
   grid-column: 9 / span 5;
-  overflow-y: scroll;
-  -ms-overflow-style: none;
-  margin-bottom: 70px;
-  scrollbar-width: none;
-  &::-webkit-scrollbar {
-    display: none;
-  }
 `
 
 const infos = css`
@@ -36,6 +28,7 @@ const infos = css`
   flex-flow: row wrap;
   margin-bottom: 60px;
   font-weight: 300;
+
   & > div {
     line-height: 1.7em;
     flex: 1 1 50%;
@@ -45,6 +38,23 @@ const infos = css`
       font-weight: 600;
     }
   }
+`
+
+const content = css`
+z-index: 1;
+grid-row: 3;
+grid-column: 9 / span 5;
+overflow-y: scroll;
+-ms-overflow-style: none;
+margin-bottom: 70px;
+scrollbar-width: none;
+&::-webkit-scrollbar {
+  display: none;
+}
+font-size: 1.1em; 
+letter-spacing: 0.5px; 
+font-weight: 300; 
+line-height: 1.5em;
 `
 
 const iconClose = css`
@@ -85,8 +95,8 @@ const ProjectPage = ({ data }) => {
               <div><span>Stack:</span>{stack}</div>
               <div><span>Technologies:</span>{technologies}</div>
             </div>
-            <div css={css`font-size: 1.1em; letter-spacing: 0.5px; font-weight: 300; line-height: 1.5em; overflow: hidden`}>{description}</div>
           </div>
+          <div css={content} dangerouslySetInnerHTML={{ __html: description }}></div>
           <div data-cursor="big" css={iconClose}>
             <TransitionLink to="/">
               x
