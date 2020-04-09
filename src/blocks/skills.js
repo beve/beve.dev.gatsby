@@ -25,7 +25,7 @@ const bars = css`
   justify-content: space-between;
   flex-flow: row wrap;
   grid-row: 4;
-  grid-column: 1 / span 10;
+  grid-column: 3 / span 10;
   min-height: 560px;
   background: #fff;
   border: 1px solid #ececec;
@@ -44,10 +44,13 @@ const bars = css`
 const title = css`
   position: relative;
   grid-row: 1;
-  grid-column: 1;
-  transform: translateX(-100%);
+  grid-column: 2 / span 3;
+  // transform: translateX(-100%);
   padding-top: 130px;
   align-self: start;
+    font-size: 3.5em;
+    letter-spacing: 1px;
+    font-weight: 700;
   height: 140px; // Position of text "Clients" top, use grid template-row height for simulate margin top
   & > div {
     position: absolute;
@@ -59,20 +62,20 @@ const title = css`
 
 const Skills = () => {
   return (
-    <Grid gridCss={grid} drawCols={12}>
+    <Grid gridCss={grid} drawCols={14}>
       <div css={title}>
-        <div>Compétences</div>
+        Compétences
       </div>
-      <div css={[label, css`grid-row: 1; grid-column: 1 / span 2;justify-self: center;align-self: end`]}>Frontend</div>
-      <div css={[label, css`grid-row: 1; grid-column: 5 / span 2;justify-self: center;align-self: top;padding-top: 190px`]}>Backend</div>
-      <Gauge customCss={[gauge, css`grid-row: 2; grid-column: 1 / span 2;align-self: center;`]} value={90} label="React" />
-      <Gauge customCss={[gauge, css`grid-row: 2; grid-column: 3 / span 2;align-self: center`]} value={70} label="Angular" />
-      <Gauge customCss={[gauge, css`grid-row: 1; grid-column: 5 / span 2;align-self: end;padding-bottom: 5px`]} value={90} label="NodeJS" />
-      <Gauge customCss={[gauge, css`grid-row: 1; grid-column: 7 / span 2;align-self: end;padding-bottom: 5px`]} value={70} label="Golang" />
-      <Gauge customCss={[gauge, css`grid-row: 2; grid-column: 7 / span 2;align-self: center`]} value={90} label="Php" />
-      <Gauge customCss={[gauge, css`grid-row: 2; grid-column: 9 / span 2;align-self: center`]} value={70} label="Admin système" />
-      <Gauge customCss={[gauge, css`grid-row: 3; grid-column: 3 / span 2;padding-top: 5px`]} value={80} label="Vanilla JS" />
-      <Gauge customCss={[gauge, css`grid-row: 3; grid-column: 5 / span 2;padding-top: 5px`]} value={70} label="Animations" />
+      <div css={[label, css`grid-row: 1; grid-column: 3 / span 2;justify-self: center;align-self: end`]}>Frontend</div>
+      <div css={[label, css`grid-row: 1; grid-column: 8 / span 2;justify-self: center;align-self: top;padding-top: 190px`]}>Backend</div>
+      <Gauge customCss={[gauge, css`grid-row: 2; grid-column: 3 / span 2;align-self: center;`]} value={90} label="React" />
+      <Gauge customCss={[gauge, css`grid-row: 2; grid-column: 5 / span 2;align-self: center`]} value={70} label="Angular" />
+      <Gauge customCss={[gauge, css`grid-row: 1; grid-column: 7 / span 2;align-self: end;padding-bottom: 5px`]} value={90} label="NodeJS" />
+      <Gauge customCss={[gauge, css`grid-row: 1; grid-column: 9 / span 2;align-self: end;padding-bottom: 5px`]} value={70} label="Golang" />
+      <Gauge customCss={[gauge, css`grid-row: 2; grid-column: 9 / span 2;align-self: center`]} value={90} label="Php" />
+      <Gauge customCss={[gauge, css`grid-row: 2; grid-column: 11 / span 2;align-self: center`]} value={70} label="Admin système" />
+      <Gauge customCss={[gauge, css`grid-row: 3; grid-column: 5 / span 2;padding-top: 5px`]} value={80} label="Vanilla JS" />
+      <Gauge customCss={[gauge, css`grid-row: 3; grid-column: 7 / span 2;padding-top: 5px`]} value={70} label="Animations" />
       <div css={bars}>
         <div css={css`max-width: 46%`}>
           <div css={[label, css`margin-bottom: 41px`]}>IOT</div>

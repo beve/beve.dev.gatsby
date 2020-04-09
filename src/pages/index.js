@@ -12,7 +12,9 @@ const IndexPage = () => (
   //   <Home path="/project/*" />
   //   <NotFoundPage default />
   // </Router>
-  <Home />
+  <Layout>
+    <Home />
+  </Layout>
 )
 
 export default IndexPage

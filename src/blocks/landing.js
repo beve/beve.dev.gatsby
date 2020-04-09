@@ -6,13 +6,13 @@ import AnimationButton from '../components/animationButton'
 
 const grid = css`
   overflow: hidden;
-  min-height: calc(100vh - 140px);
+  min-height: 100vh;
 `
 
 const caption = (theme) => css`
   display: flex;
   flex-direction: column;
-  grid-column: 1 / span 10 ;
+  grid-column: 2 / span 12 ;
   grid-row: 1;
   text-transform: uppercase;
   align-items: center;
@@ -32,7 +32,7 @@ const desc = (theme) => css`
   flex-direction: column;
   justify-content: flex-end;
   grid-row: 1;
-  grid-column: 2 / span 12 ;
+  grid-column: 4 / span 14 ;
   margin-bottom: 50px;
   font-size: 22px;
   font-weight: 300;
@@ -48,7 +48,7 @@ const buttonContainer = css`
   justify-content: center;
   margin-top: -120px;
   grid-row: 1;
-  grid-column: 11 / span 2;
+  grid-column: 13 / span 2;
 `
 
 const button = (theme) => css`
@@ -58,7 +58,7 @@ const button = (theme) => css`
 export default () => {
   return (
     <>
-      <Grid gridCss={grid} drawCols={12}>
+      <Grid gridCss={grid} drawCols={14}>
         <div css={caption}>
           <div>Make dev.</div>
           <span>great again !</span>

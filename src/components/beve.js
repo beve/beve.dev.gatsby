@@ -7,7 +7,6 @@ const style = (theme) => css`
   line-height: 0.85em;
   color: ${theme.colors.text};
   grid-area: logo;
-  border-right: 1px solid ${theme.colors.grid};
   & > div {
     display: flex;
     height: 100%;

@@ -11,10 +11,10 @@ const gridCss = css`
 
 const Projects = ({ data }) => {
   return (
-    <Grid gridCss={gridCss} drawCols={12}>
+    <Grid gridCss={gridCss} drawCols={14}>
       {data.allDatoCmsProject.edges.map((project, i) => {
         const row = [1, 2, 4, 5][i % 4]
-        const col = [6, 1][i % 2]
+        const col = [8, 3][i % 2]
         const path = `/project/${project.node.name
           .replace(" ", "-")
           .toLowerCase()}`

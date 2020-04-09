@@ -4,12 +4,12 @@ import { css } from '@emotion/core'
 import Grid from '../components/grid'
 
 const gridCss = css`
-  grid-template-rows: 220px 1fr 190px;
+  grid-template-rows: 280px 1fr 190px;
 `
 
 const formCss = css`
   display: flex;
-  grid-area: 2 / 1 / span 1 / span 10;
+  grid-area: 2 / 3 / span 1 / span 10;
   flex-flow: row wrap;
   input, textarea {
   box-sizing: border-box;
@@ -40,7 +40,7 @@ const formCss = css`
 
 const title = css`
   grid-row: 1;
-  grid-column: 5 / span 2;
+  grid-column: 7 / span 2;
   justify-self: center;
   align-self: end;
   font-size: 3.5em;
@@ -51,16 +51,16 @@ const title = css`
 
 const submit = css`
   grid-row: 3;
-  grid-column: 5 / span 2;
+  grid-column: 7 / span 2;
   align-self: center;
   justify-self: center;
 `
 
 export default () => {
   return (
-    <Grid gridCss={gridCss} drawCols={12}>
+    <Grid gridCss={gridCss} drawCols={14}>
       <div css={title}>
-        <div>Contact</div>
+        Contact
       </div>
       <div css={formCss}>
         <input type="text" placeholder="Nom Prénom"></input>

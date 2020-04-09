@@ -7,6 +7,7 @@ const style = (theme) => css`
   height: 139px;
   right: 0;
   border-bottom: 1px solid ${theme.colors.grid};
+  border-right: 1px solid ${theme.colors.grid};
   justify-content: space-evenly; 
   align-items: center;
   text-transform: uppercase;

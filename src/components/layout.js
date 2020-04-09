@@ -3,6 +3,8 @@ import PropTypes from "prop-types"
 import { css } from "@emotion/core"
 import { ThemeProvider } from "emotion-theming"
 import { Helmet } from "react-helmet"
+import { TransitionPortal } from "gatsby-plugin-transition-link";
+
 
 import Beve from "./beve"
 import Cursor from "./cursor"
@@ -57,8 +59,9 @@ const mainGrid = css`
   max-width: 1440px;
   grid-template-columns: repeat(7, 1fr);
   grid-template-areas:
-  "infos main main main main main main"
+  "main main main main main main main"
 `
+
 const spacer1 = theme => css`
   grid-area: spacer1;
   border-right: 1px solid ${theme.colors.grid};
@@ -77,8 +80,25 @@ const spacer2 = theme => css`
   // backdrop-filter: blur(4px);
 `
 
+const bottomGrid = css`
+  position: fixed;
+  z-index: 10;
+  bottom: 0;
+  grid-template-columns: repeat(7, 1fr);
+  width: 100vw;
+  max-width: 1440px;
+  transform: translateX(0);
+  grid-template-areas:
+  "infos . . . . . .";
+
+  @media screen and (min-width: 1440px) {
+    left: 50%;
+    transform: translateX(calc(-50%));
+  }
+`
+
 const main = theme => css`
-  padding-top: 140px;
+  // padding-top: 140px;
   grid-area: main;
   min-height: calc(100vh - ${theme.gridHeight});
 `
@@ -89,15 +109,19 @@ const Layout = ({ children }) => {
       <Helmet></Helmet>
       <ThemeProvider theme={theme}>
         <div css={style}>
-          <Grid gridCss={topGrid}>
-            <Beve />
-            <div css={spacer1}></div>
-            <div css={spacer2}></div>
-            <Menu />
-          </Grid>
+          <TransitionPortal>
+            <Grid gridCss={topGrid}>
+              <Beve />
+              <div css={spacer1}></div>
+              <div css={spacer2}></div>
+              <Menu />
+            </Grid>
+          </TransitionPortal>
           <Grid gridCss={mainGrid}>
-            <ContactInfos />
             <main css={main}>{children}</main>
+          </Grid>
+          <Grid gridCss={bottomGrid}>
+            <ContactInfos customCss={css`grid-area: infos`}/>
           </Grid>
         </div>
         <Cursor />
