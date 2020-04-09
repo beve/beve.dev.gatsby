@@ -38,7 +38,7 @@ const infos = css`
       padding-right: 0.3em;
       font-weight: 600;
     }
-    &:nth-child(odd) {
+    &:nth-of-type(odd) {
       flex: 1 1 calc(50% - 1em);
       padding-right: 1em;
     }
@@ -90,7 +90,6 @@ const iconDown = css`
 `
 
 const ProjectPage = ({ data }) => {
-  console.log(data);
   const { name, images, stack, customer, technologies, perimeter, description } = data.allDatoCmsProject.edges[0].node;
   return (
     <>
