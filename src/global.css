@@ -1,3 +1,8 @@
 body {
   margin: 0;
 }
+
+* {
+  cursor: none;
+  outline: none;
+}

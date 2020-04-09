@@ -134,7 +134,7 @@ const Cursor = ({ cursorSize = 180, hideCursor = true }) => {
       }, {
         duration: .3,
         opacity: 1,
-        scale: cursorInnerRatioBig * size / 110
+        scale: cursorInnerRatioBig * size / 130
       }, '<')
       lockOuter.current = true
       outerCursorTL.play()

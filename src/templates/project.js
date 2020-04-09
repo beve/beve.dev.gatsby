@@ -63,6 +63,7 @@ line-height: 1.5em;
 `
 
 const iconClose = css`
+  z-index: 1;
   box-siding: border-box;
   grid-row: 2;
   grid-column: 14;
@@ -76,6 +77,7 @@ const iconClose = css`
 `
 
 const iconDown = css`
+  z-index: 1;
   grid-row: 3;
   grid-column: 8;
   box-sizing: border-box;
@@ -122,7 +124,7 @@ const ProjectPage = ({ data }) => {
               <Close />
             </TransitionLink>
           </div>
-          <div css={iconDown}><Down /></div>
+          <div css={iconDown} data-cursor="big"><Down /></div>
         </Grid>
       </Layout>
     </>
