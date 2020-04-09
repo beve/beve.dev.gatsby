@@ -6,7 +6,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const result = await graphql(
     `
       {
-        allDatoCmsProject(filter: {meta: {status: {eq: "published"}}}) {
+        allDatoCmsProject(filter: {meta: {status: {eq: "published"}}, locale: {eq: "fr"}}) {
           edges {
             node {
               id
