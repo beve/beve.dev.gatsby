@@ -40,14 +40,14 @@ module.exports = {
         disableLiveReload: false,
       },
     },
-    "gatsby-plugin-transition-link",
-    // {
-    //   resolve: "gatsby-plugin-transition-link",
-    //   options: {
-    //     layout: require.resolve(`./src/components/layout.js`),
-    //     injectPageProps: false,
-    //   },
-    // },
+    // "gatsby-plugin-transition-link",
+    {
+      resolve: "gatsby-plugin-transition-link",
+      options: {
+        layout: require.resolve(`./src/components/pageWrapper.js`),
+        injectPageProps: false,
+      },
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
