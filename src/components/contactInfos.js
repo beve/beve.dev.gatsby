@@ -3,10 +3,15 @@ import { css } from "@emotion/core"
 
 const style = css`
   font-size: 1em; // 16px
+  gri-column: 1;
+  justify-self: center;
   div {
     display: flex;
     flex-flow: column nowrap;
-    transform: rotate(270deg) translate(132px, -10px);
+    justify-self: center;
+    writing-mode: vertical-lr;
+    transform: rotate(180deg);
+    margin-bottom: 55px;
     a {
       font-weight: 300;
     }
