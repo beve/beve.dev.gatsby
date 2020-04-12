@@ -154,7 +154,7 @@ const Cursor = ({ cursorSize = 180, hideCursor = true }) => {
     <>
       <div
         ref={innerCursor}
-        css={(theme) => css`
+        css={css`
           position: fixed;
           z-index: 100000;
           top: 0;
@@ -162,13 +162,13 @@ const Cursor = ({ cursorSize = 180, hideCursor = true }) => {
           width: ${cursorSize}px;
           height: ${cursorSize}px;
           border-radius: 50%;
-          background-color: ${theme.colors.primary};
+          background-color: #e73c36;
           pointer-events: none;
         `}
       ></div>
       <div
         ref={outerCursor}
-        css={(theme) => css`
+        css={css`
           position: fixed;
           z-index: 100000;
           top: 0;
@@ -178,7 +178,7 @@ const Cursor = ({ cursorSize = 180, hideCursor = true }) => {
           height: ${cursorOuterSize}px;
           background-color: red;
           border-radius: 50%;
-          border: 1px solid ${theme.colors.primary};
+          border: 1px solid #e73c36;
           pointer-events: none;
           background-color: transparent;
         `}

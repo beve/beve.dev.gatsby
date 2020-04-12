@@ -3,11 +3,8 @@ import PropTypes from "prop-types"
 import { css } from "@emotion/core"
 import { ThemeProvider } from "emotion-theming"
 import { Helmet } from "react-helmet"
-// import { TransitionPortal } from "gatsby-plugin-transition-link";
-
 
 import Beve from "./beve"
-import Cursor from "./cursor"
 import Menu from "./menu"
 import Grid from "./grid"
 import ContactInfos from "./contactInfos"
@@ -90,7 +87,6 @@ const bottomGrid = css`
   transform: translateX(0);
   grid-template-areas:
   "infos . . . . . .";
-
   @media screen and (min-width: 1440px) {
     left: 50%;
     transform: translateX(calc(-50%));
@@ -124,7 +120,6 @@ const Layout = ({ children }) => {
             <ContactInfos customCss={css`grid-area: infos`}/>
           </Grid>
         </div>
-        <Cursor />
       </ThemeProvider>
     </>
   )

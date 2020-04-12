@@ -13,7 +13,7 @@ export default ({ value, height = 10, width = 410, label = 'Arduino', color }) =
   useEffect(() => {
 
     const animatedValue = { val: 0 }
-    const tl = gsap.timeline({ paused: true, delay: Math.random() * 1.5 })
+    const tl = gsap.timeline({ paused: true, delay: Math.random() * .5 })
 
     // Bar length
     tl.fromTo(
@@ -49,7 +49,7 @@ export default ({ value, height = 10, width = 410, label = 'Arduino', color }) =
       },
     }, '<')
 
-    // tl.play()
+    tl.play()
     return (() => {
       tl.clear();
     })

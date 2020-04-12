@@ -22,7 +22,7 @@ const Grid = ({ children, gridCss, drawCols, colsCss }) => {
   }
   return (
     <div css={[style, css`grid-template-columns: repeat(${drawCols}, 1fr)`, gridCss]}>
-      {divs && divs.map((_, i) => <section css={[cols, css`grid-column: ${i+1}`, colsCss]} key={`d${i}`}></section>)}
+      {divs && divs.map((_, i) => <b css={[cols, css`grid-column: ${i+1}`, colsCss]} key={`d${i}`}></b>)}
       {children}
     </div>
   )

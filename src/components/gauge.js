@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react"
+import React, { useEffect, useRef, useState, useCallback } from "react"
 import { css } from "@emotion/core"
 import { gsap } from "gsap"
 
@@ -14,10 +14,23 @@ const Gauge = ({
   const ref = useRef()
   const [computedAnimatedValue, set] = useState(0)
   const length = 2 * Math.PI * radius
-  
-  useEffect(() => {
+  const tl = gsap.timeline({paused: true, delay: Math.random() * .5})
+
+  const setObserver = (target) => {
+    const callback = entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          tl.play()
+        }
+      });
+    };
+    const options = { threshold: 0.5 };
+    const observer = new IntersectionObserver(callback, options);
+    observer.observe(target)
+  }
+
+  const setAnimation = () => {
     const animatedValue = { val: 0 }
-    const tl = gsap.timeline({paused: true, delay: Math.random() * 1.5})
 
     tl.fromTo(
       ref.current,
@@ -38,16 +51,24 @@ const Gauge = ({
         set(animatedValue.val)
       },
     }, '<')
+  }
+  
+  useEffect(() => {
 
-    // tl.play()
+    setAnimation();
+    setObserver(ref.current);
+
     return (() => {
       tl.clear()
     })
   }, [length, value])
 
+  // useEffect(() => {
+  //   console.log(!!mounted);
+  // }, [mounted])
+
   return (
-    <div css={[css`font-weight: 300`, customCss]}>
-      <svg viewBox={`0 0 ${(radius * 2 + strokeWidth) * 1.5} ${(radius * 2 + strokeWidth) * 1.5}`}>
+      <svg css={customCss} ref={ref} viewBox={`0 0 ${(radius * 2 + strokeWidth) * 1.5} ${(radius * 2 + strokeWidth) * 1.5}`}>
         <circle
           ref={ref}
           cx={(radius + strokeWidth / 2) * 1.5}
@@ -104,7 +125,6 @@ const Gauge = ({
             {label}
         </text>
       </svg>
-    </div>
   )
 }
 
