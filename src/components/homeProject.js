@@ -41,7 +41,7 @@ export default ({ customCss, name, illustration, logo, path }) => {
     const { top, left } = ref.current.getBoundingClientRect();
     gsap.set(el, { x: e.clientX - left, y: e.clientY - top, opacity: 0.9 })
     gsap.set('#inner-cursor', { visibility: 'hidden' })
-    gsap.fromTo(el, { scale: 0 }, { scale: 55, duration: 0.5 })
+    gsap.fromTo(el, { scale: 0 }, { scale: 60, duration: 0.5 })
   }
 
   const handleMouseLeave = e => {
