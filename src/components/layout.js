@@ -87,6 +87,7 @@ const bottomGrid = css`
   transform: translateX(0);
   grid-template-areas:
   "infos . . . . . .";
+  pointer-events: none;
   @media screen and (min-width: 1440px) {
     left: 50%;
     transform: translateX(calc(-50%));
