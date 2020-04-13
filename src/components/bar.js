@@ -48,6 +48,7 @@ export default ({ value, height = 10, width = 410, label = 'Arduino', color }) =
         set(animatedValue.val)
       },
       onComplete: () => {
+        // Animation complete disconnect observer
         observer.current.disconnect()
       }
     }, '<')

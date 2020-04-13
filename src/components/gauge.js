@@ -18,25 +18,26 @@ const Gauge = ({
 }) => {
 
   const [computedAnimatedValue, set] = useState(0)
-  const timeline = useTimeline({ paused: true, delay: Math.random() * 1.2 }, 
-  (tl) => {
-    const animatedValue = { val: 0 }
-    gsap.set(ref.current, { drawSVG: 0 })
-    tl.to(ref.current, .8, {drawSVG: `${value}%`})
-    tl.to(animatedValue, 0.3, {
-      val: value,
-      roundProps: "val",
-      onUpdate: () => {
-        set(animatedValue.val)
-      },
-      onComplete: () =>{
-        observer.current.disconnect()
-      }
-    }, '<')
-  }
-  )
 
   const [ref, observer] = useIntersection(() => { console.log('play !'); timeline.current.play() })
+
+  const timeline = useTimeline({ paused: true, delay: Math.random() * 1.2 },
+    (tl) => {
+      const animatedValue = { val: 0 }
+      gsap.set(ref.current, { drawSVG: 0 })
+      tl.to(ref.current, .8, { drawSVG: `${value}%` })
+      tl.to(animatedValue, 0.3, {
+        val: value,
+        roundProps: "val",
+        onUpdate: () => {
+          set(animatedValue.val)
+        },
+        onComplete: () => {
+          observer.current.disconnect()
+        }
+      }, '<')
+    }
+  )
 
   return (
     <svg css={customCss} viewBox={`0 0 ${(radius * 2 + strokeWidth) * 1.5} ${(radius * 2 + strokeWidth) * 1.5}`}>

@@ -57,12 +57,6 @@ const Cursor = ({ cursorSize = 180, hideCursor = true }) => {
   }, [cursorSize, hideCursor, cursorOuterSize])
 
   useEffect(() => {
-    // At the end of animation, reverse outer cursor size
-    // bigCursorTL.eventCallback('onReverseComplete', () => {
-    // Resize outer circle to original size
-    // gsap.set(outerCursor.current, { width: cursorOuterSize, height: cursorOuterSize });
-    // hovered.current = false;
-    // })
     bigCursorTL.fromTo(
       innerCursor.current,
       {
@@ -74,23 +68,7 @@ const Cursor = ({ cursorSize = 180, hideCursor = true }) => {
         scale: cursorInnerRatioBig,
         opacity: .3,
       })
-    // bigCursorTL.fromTo(
-    //   outerCursor.current,
-    //   {
-    //     scale: cursorInnerRatio,
-    //     opacity: 1
-    //   },
-    //   {
-    //     duration: .2,
-    //     scale: cursorInnerRatioBig,
-    //     opacity: 1,
-    //   }, '<')
     const surroundItem = (e) => {
-      // hovered.current = true
-      // bigCursorTL.seek(0, false)
-      // outerCursorTL.seek(0, false)
-      // Resize outer circle without animation for performance 
-      // gsap.set(outerCursor.current, { width: cursorOuterSize, height: cursorOuterSize });
       bigCursorTL.play()
     }
     const leaveItem = (e) => {
@@ -116,9 +94,6 @@ const Cursor = ({ cursorSize = 180, hideCursor = true }) => {
       opacity: .1,
     })
     const surroundItem = (e) => {
-      // Set other animation to beginning
-      // bigCursorTL.seek(0, false)
-      // outerCursorTL.seek(0, false)
       const el = e.target
       const { top, left, width, height } = el.getBoundingClientRect()
       const size = Math.max(width, height)
@@ -154,6 +129,7 @@ const Cursor = ({ cursorSize = 180, hideCursor = true }) => {
     <>
       <div
         ref={innerCursor}
+        id='inner-cursor'
         css={css`
           position: fixed;
           z-index: 100000;

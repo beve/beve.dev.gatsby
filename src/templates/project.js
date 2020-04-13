@@ -119,7 +119,7 @@ const ProjectPage = ({ data }) => {
           </div>
           <div css={content} dangerouslySetInnerHTML={{ __html: description }}></div>
           <div data-cursor="big" css={iconClose}>
-            <TransitionLink to="/">
+            <TransitionLink to="/" preventScrollJump>
               <Close />
             </TransitionLink>
           </div>
