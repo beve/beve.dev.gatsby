@@ -9,9 +9,20 @@ const gridCss = css`
   grid-template-rows: repeat(6, 1fr);
 `
 
+const title = css`
+  grid-row: 1;
+  grid-column: 2 / -1;
+  font-size: 3.5em;
+  letter-spacing: 1px;
+  align-self: end;
+  font-weight: 700;
+  padding-bottom: 55px;
+`
+
 const Projects = ({ data }) => {
   return (
     <Grid gridCss={gridCss} drawCols={14}>
+      <div css={title}>Projets</div>
       {data.allDatoCmsProject.edges.map((project, i) => {
         const row = [1, 2, 4, 5][i % 4]
         const col = [8, 3][i % 2]
