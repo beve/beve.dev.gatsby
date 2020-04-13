@@ -9,11 +9,24 @@ export default ({ value, height = 10, width = 410, label = 'Arduino', color }) =
   const ref = useRef()
   const valRef = useRef()
   const [computedAnimatedValue, set] = useState(0)
+  const tl = gsap.timeline({ paused: true, delay: Math.random() * .5 })
+
+  const setObserver = (target) => {
+    const callback = entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          tl.play()
+        }
+      });
+    };
+    const observer = new IntersectionObserver(callback, { threshold: 0.5 });
+    observer.observe(target)
+  }
 
   useEffect(() => {
 
     const animatedValue = { val: 0 }
-    const tl = gsap.timeline({ paused: true, delay: Math.random() * .5 })
+    setObserver(ref.current)
 
     // Bar length
     tl.fromTo(
@@ -49,7 +62,6 @@ export default ({ value, height = 10, width = 410, label = 'Arduino', color }) =
       },
     }, '<')
 
-    tl.play()
     return (() => {
       tl.clear();
     })
