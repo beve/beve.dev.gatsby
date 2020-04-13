@@ -18,7 +18,7 @@ export default (props) => {
     })
     tl.to(
       dashedRoundRef.current,
-      0.5,
+      0.7,
       { strokeDashoffset: -20, repeat: -1, ease: "none" },
       "<"
     )

@@ -10,8 +10,8 @@ const AnimationButton = ({ customCss }) => {
   const dashedLineRef = useRef(null)
 
   const timeline = useTimeline({ paused: true }, (tl) => {
-    tl.to(dashedLineRef.current, 0.5, {
-      strokeDashoffset: -30,
+    tl.to(dashedLineRef.current, 0.8, {
+      strokeDashoffset: -33,
       repeat: -1,
       ease: "none",
     })
