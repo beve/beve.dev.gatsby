@@ -23,7 +23,7 @@ const Customers = ({ data }) => {
   return (
     <Grid gridCss={grid} drawCols={14}>
       <div css={title}>
-        <div>Clients</div>
+        Clients
       </div>
       {data.allFile.edges.map(image => {
         const [_, row, col] = image.node.name.match(/^[0-9]{2}-([0-9]+)-([0-9]+).*/) // eslint-disable-line
