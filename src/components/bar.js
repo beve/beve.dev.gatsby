@@ -8,16 +8,17 @@ export default ({ value, height = 10, width = 410, label = 'Arduino', color }) =
   const halfHeight = height / 2;
   const computedValue = width * value / 100;
   const valRef = useRef()
+  const pathRef = useRef()
   const [computedAnimatedValue, set] = useState(0)
 
-  const [ref, observer] = useIntersection(() => { console.log('play !'); timeline.current.play() })
+  const [ref, observer] = useIntersection(() => { timeline.current.play() })
 
   const timeline = useTimeline({ paused: true, delay: Math.random() * .5 }, (tl) => {
     const animatedValue = { val: 0 }
 
     // Bar length
     tl.fromTo(
-      ref.current,
+      pathRef.current,
       {
         opacity: 0.2,
       },
@@ -71,13 +72,13 @@ export default ({ value, height = 10, width = 410, label = 'Arduino', color }) =
   `
 
   return (
-    <svg css={svg} viewBox={`0 0 ${width + height} 93`}>
+    <svg ref={ref} css={svg} viewBox={`0 0 ${width + height} 93`}>
       <defs>
         <path id="labelPath" d={`M${halfHeight},${50 - halfHeight} H${computedValue + 120}`} />
       </defs>
       <g fill="none">
         <path d={`M${halfHeight},${50 - halfHeight} H${width + halfHeight}`} />
-        <path ref={ref} d={`M${halfHeight},${50 - halfHeight} H${width + halfHeight}`} />
+        <path ref={pathRef} d={`M${halfHeight},${50 - halfHeight} H${width + halfHeight}`} />
       </g>
       <g ref={valRef} css={css`opacity: 0`}>
         <text

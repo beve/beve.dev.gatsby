@@ -1,10 +1,10 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useRef } from 'react'
 import Img from 'gatsby-image'
 import { css } from '@emotion/core'
 import TransitionLink from 'gatsby-plugin-transition-link'
 import gsap from 'gsap'
 
-import useTimeline from '../hooks/useTimeline'
+// import useTimeline from '../hooks/useTimeline'
 
 const style = css`
   position: relative;
@@ -15,6 +15,7 @@ const style = css`
     left: 0;
     right: 0;
     overflow: hidden;
+    pointer-events: none;
     span {
       display: block;
       position: absolute;
@@ -25,6 +26,7 @@ const style = css`
       opacity: 0;
       width: 24px;
       height: 24px;
+      pointer-events: none;
     }
   }
 `
@@ -39,7 +41,7 @@ export default ({ customCss, name, illustration, logo, path }) => {
     const { top, left } = ref.current.getBoundingClientRect();
     gsap.set(el, { x: e.clientX - left, y: e.clientY - top, opacity: 0.9 })
     gsap.set('#inner-cursor', { visibility: 'hidden' })
-    gsap.fromTo(el, { scale: 0 }, { scale: 38, duration: 0.5 })
+    gsap.fromTo(el, { scale: 0 }, { scale: 55, duration: 0.5 })
   }
 
   const handleMouseLeave = e => {
@@ -50,12 +52,12 @@ export default ({ customCss, name, illustration, logo, path }) => {
     gsap.to(el, 0.5, { scale: 0 })
   }
 
-  const timeline = useTimeline({ paused: true }, tl => {
-  })
+  // const timeline = useTimeline({ paused: true }, tl => {
+  // })
 
   return (
     <div css={[style, customCss]}>
-      <div ref={ref} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+      <div tabIndex={0} role="button" ref={ref} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
         <TransitionLink
           to={path}
           entry={{
