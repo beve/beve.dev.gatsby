@@ -53,12 +53,10 @@ const title = css`
 
 const submit = css`
   grid-row: 3;
-  grid-column: 7 / span 6;
-  width: 432px;
+  grid-column: 4 / span 8;
+  width: 100%;
   align-self: center;
   justify-self: center;
-  margin-top: 20px;
-  margin-left: -85px;
 `
 
 export default () => {

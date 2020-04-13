@@ -1,14 +1,35 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useRef } from "react"
 import gsap from "gsap"
 import Draggable from "gsap/Draggable"
 import InertiaPlugin from "gsap/InertiaPlugin"
+import useTimeline from "../hooks/useTimeline"
 
 const AnimationButton = ({ customCss }) => {
+
+  const ref = useRef(null)
+  const dashedLineRef = useRef(null)
+
+  const timeline = useTimeline({ paused: true }, (tl) => {
+    tl.to(dashedLineRef.current, 0.5, {
+      strokeDashoffset: -30,
+      repeat: -1,
+      ease: "none",
+    })
+  })
+
+  const onMouseEnterHandle = () => {
+    timeline.current.play()
+  }
+
+  const onMouseLeaveHandle = () => {
+    timeline.current.pause()
+  }
+
   useEffect(() => {
     if (typeof window !== "undefined") {
       gsap.registerPlugin(Draggable)
       gsap.registerPlugin(InertiaPlugin)
-      Draggable.create("#animationButton", {
+      Draggable.create(ref.current, {
         type: "rotation",
         throwProps: true,
         dragClickables: true,
@@ -23,19 +44,22 @@ const AnimationButton = ({ customCss }) => {
 
   return (
     <svg
-      id="animationButton"
+      ref={ref}
       viewBox="0 0 162 162"
       height={162}
       width={162}
       css={customCss}
+      role='button'
+      onMouseEnter={onMouseEnterHandle}
+      onMouseLeave={onMouseLeaveHandle}
     >
       <path
+        ref={dashedLineRef}
         d="M80.722 3.68a76.656 76.656 0 0166.386 38.329 76.656 76.656 0 010 76.656 76.656 76.656 0 01-66.386 38.329"
         fill="none"
         stroke="#000"
         strokeWidth={1.25}
-        strokeMiterlimit={10}
-        strokeDasharray="12"
+        strokeDasharray={12}
         strokeDashoffset={15}
       />
       <path
