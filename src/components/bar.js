@@ -1,32 +1,19 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
+import useIntersection from "../hooks/useIntersection"
+import useTimeline from "../hooks/useTimeline"
 import { css } from '@emotion/core'
-import gsap from 'gsap'
 
 export default ({ value, height = 10, width = 410, label = 'Arduino', color }) => {
 
   const halfHeight = height / 2;
   const computedValue = width * value / 100;
-  const ref = useRef()
   const valRef = useRef()
   const [computedAnimatedValue, set] = useState(0)
-  const tl = gsap.timeline({ paused: true, delay: Math.random() * .5 })
 
-  const setObserver = (target) => {
-    const callback = entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          tl.play()
-        }
-      });
-    };
-    const observer = new IntersectionObserver(callback, { threshold: 0.5 });
-    observer.observe(target)
-  }
+  const [ref, observer] = useIntersection(() => { console.log('play !'); timeline.current.play() })
 
-  useEffect(() => {
-
+  const timeline = useTimeline({ paused: true, delay: Math.random() * .5 }, (tl) => {
     const animatedValue = { val: 0 }
-    setObserver(ref.current)
 
     // Bar length
     tl.fromTo(
@@ -60,12 +47,12 @@ export default ({ value, height = 10, width = 410, label = 'Arduino', color }) =
       onUpdate: () => {
         set(animatedValue.val)
       },
+      onComplete: () => {
+        observer.current.disconnect()
+      }
     }, '<')
+  })
 
-    return (() => {
-      tl.clear();
-    })
-  }, [width, value])
 
   const svg = theme => css`
     path {
@@ -89,7 +76,6 @@ export default ({ value, height = 10, width = 410, label = 'Arduino', color }) =
       </defs>
       <g fill="none">
         <path d={`M${halfHeight},${50 - halfHeight} H${width + halfHeight}`} />
-        {/* <path ref={ref} d={`M${halfHeight},${50 - halfHeight} H${computedValue}`} /> */}
         <path ref={ref} d={`M${halfHeight},${50 - halfHeight} H${width + halfHeight}`} />
       </g>
       <g ref={valRef} css={css`opacity: 0`}>

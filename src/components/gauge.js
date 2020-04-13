@@ -1,6 +1,8 @@
-import React, { useEffect, useRef, useState } from "react"
+import React, { useState } from "react"
 import { css } from "@emotion/core"
 import { gsap } from "gsap"
+import useIntersection from "../hooks/useIntersection"
+import useTimeline from "../hooks/useTimeline"
 import CustomEase from "gsap/CustomEase3"
 import DrawSVG from "gsap/DrawSVGPlugin3"
 gsap.registerPlugin(CustomEase)
@@ -15,26 +17,10 @@ const Gauge = ({
   label = "React",
 }) => {
 
-  const ref = useRef()
   const [computedAnimatedValue, set] = useState(0)
-  const length = 2 * Math.PI * radius
-  const tl = gsap.timeline({ paused: true, delay: Math.random() * 1.2 })
-
-  const setObserver = (target) => {
-    const callback = entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          tl.play()
-        }
-      });
-    };
-    const observer = new IntersectionObserver(callback, { threshold: 0.5 });
-    observer.observe(target)
-  }
-
-  const setAnimation = () => {
+  const timeline = useTimeline({ paused: true, delay: Math.random() * 1.2 }, 
+  (tl) => {
     const animatedValue = { val: 0 }
-
     gsap.set(ref.current, { drawSVG: 0 })
     tl.to(ref.current, .8, {drawSVG: `${value}%`})
     tl.to(animatedValue, 0.3, {
@@ -43,18 +29,14 @@ const Gauge = ({
       onUpdate: () => {
         set(animatedValue.val)
       },
+      onComplete: () =>{
+        observer.current.disconnect()
+      }
     }, '<')
   }
+  )
 
-  useEffect(() => {
-
-    setAnimation();
-    setObserver(ref.current);
-
-    return (() => {
-      tl.clear()
-    })
-  }, [length, value])
+  const [ref, observer] = useIntersection(() => { console.log('play !'); timeline.current.play() })
 
   return (
     <svg css={customCss} viewBox={`0 0 ${(radius * 2 + strokeWidth) * 1.5} ${(radius * 2 + strokeWidth) * 1.5}`}>
