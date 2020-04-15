@@ -21,7 +21,7 @@ const Gauge = ({
 
   const [ref, observer] = useIntersection(() => { timeline.current.play() })
 
-  const timeline = useTimeline({ paused: true, delay: Math.random() * 1.2 },
+  const timeline = useTimeline({ paused: true, delay: Math.random() * .5 },
     (tl) => {
       const animatedValue = { val: 0 }
       const el = ref.current.querySelector('circle');
