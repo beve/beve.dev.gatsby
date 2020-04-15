@@ -25,7 +25,7 @@ const Projects = ({ data }) => {
       <div css={title}>Projets</div>
       {data.allDatoCmsProject.edges.map((project, i) => {
         const row = [1, 2, 4, 5][i % 4]
-        const col = [8, 3][i % 2]
+        const col = [9, 3][i % 2]
         const path = `/projet/${project.node.name
           .replace(" ", "-")
           .toLowerCase()}`
@@ -39,7 +39,7 @@ const Projects = ({ data }) => {
             path={path}
             customCss={css`
               grid-row: ${row} / span 2;
-              grid-column: ${col} / span 5;
+              grid-column: ${col} / span 4;
             `}
           />
         )
